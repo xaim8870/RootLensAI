@@ -1,0 +1,27 @@
+{
+  "run_id": "test_003",
+  "condition": "healthy",
+  "fault_service": null,
+  "fault_type": null,
+  "duration_seconds": 60,
+  "sampling_interval_seconds": 5,
+  "prometheus_url": "http://localhost:9090",
+  "started_at": "2026-08-12T00:35:03.039336+00:00",
+  "services": [
+    "frontend",
+    "frontend-proxy",
+    "checkout",
+    "payment",
+    "cart",
+    "currency",
+    "shipping",
+    "product-catalog",
+    "recommendation",
+    "email",
+    "ad",
+    "quote"
+  ],
+  "feature_method": "raw_counter_deltas",
+  "finished_at": "2026-08-12T00:36:08.150892+00:00",
+  "rows_collected": 144
+}

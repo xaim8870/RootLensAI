@@ -1,0 +1,25 @@
+{
+  "run_id": "test_001",
+  "condition": "healthy",
+  "fault_service": null,
+  "fault_type": null,
+  "duration_seconds": 30,
+  "sampling_interval_seconds": 5,
+  "prometheus_url": "http://localhost:9090",
+  "started_at": "2026-08-11T20:49:57.999148+00:00",
+  "services": [
+    "frontend",
+    "frontend-proxy",
+    "checkout",
+    "payment",
+    "cart",
+    "currency",
+    "shipping",
+    "product-catalog",
+    "recommendation",
+    "email",
+    "ad",
+    "quote"
+  ],
+  "finished_at": "2026-08-11T20:50:28.005398+00:00"
+}
