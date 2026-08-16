@@ -8,3 +8,4 @@ rootlens/.venv
 opentelemetry-demo/.venv
 rootlens/.venv
 opentelemetry-demo/.env.override
+experiments/__pycache__/

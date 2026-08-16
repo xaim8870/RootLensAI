@@ -1,0 +1,504 @@
+{
+  "schema_version": 1,
+  "experiment_id": "payment_latency_500",
+  "started_at": "2026-08-16T18:27:31.661108+00:00",
+  "status": "PASS",
+  "runs": [
+    {
+      "sequence": 4,
+      "fault_run_id": "payment_latency_500_004",
+      "recovery_run_id": "payment_latency_500_recovery_004",
+      "fault": {
+        "schema_version": 1,
+        "run_id": "payment_latency_500_004",
+        "condition": "fault",
+        "status": "PASS",
+        "research_valid": true,
+        "validated_at": "2026-08-16T18:33:49.747793+00:00",
+        "gates": [
+          {
+            "name": "required_columns",
+            "status": "PASS",
+            "detail": "all required columns present"
+          },
+          {
+            "name": "expected_windows",
+            "status": "PASS",
+            "detail": "actual=60, minimum=60, configured=60"
+          },
+          {
+            "name": "expected_rows",
+            "status": "PASS",
+            "detail": "actual=720, minimum=720, configured=720"
+          },
+          {
+            "name": "services_per_window",
+            "status": "PASS",
+            "detail": "windows_with_wrong_service_count=0, expected_per_window=12"
+          },
+          {
+            "name": "unique_service_rows",
+            "status": "PASS",
+            "detail": "duplicate_timestamp_service_rows=0"
+          },
+          {
+            "name": "expected_services",
+            "status": "PASS",
+            "detail": "missing=[], unexpected=[]"
+          },
+          {
+            "name": "missing_request_rate",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_cpu",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_memory",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "target_service_activity",
+            "status": "PASS",
+            "detail": "service=payment, active_fraction=1.0000, minimum=0.8000"
+          },
+          {
+            "name": "nonnegative_metrics",
+            "status": "PASS",
+            "detail": "negative_counts={}"
+          },
+          {
+            "name": "error_rate_bounds",
+            "status": "PASS",
+            "detail": "invalid_rows=0, bounds=[0,1.0]"
+          },
+          {
+            "name": "intervention_visible",
+            "status": "PASS",
+            "detail": "target_median_latency_ms=505.1528377500001, minimum=400.0"
+          },
+          {
+            "name": "metadata_consistency",
+            "status": "PASS",
+            "detail": "metadata_rows=720, csv_rows=720, metadata_windows=60, csv_windows=60"
+          }
+        ]
+      },
+      "recovery": {
+        "schema_version": 1,
+        "run_id": "payment_latency_500_recovery_004",
+        "condition": "recovery",
+        "status": "PASS",
+        "research_valid": true,
+        "validated_at": "2026-08-16T18:39:49.708797+00:00",
+        "gates": [
+          {
+            "name": "required_columns",
+            "status": "PASS",
+            "detail": "all required columns present"
+          },
+          {
+            "name": "expected_windows",
+            "status": "PASS",
+            "detail": "actual=60, minimum=60, configured=60"
+          },
+          {
+            "name": "expected_rows",
+            "status": "PASS",
+            "detail": "actual=720, minimum=720, configured=720"
+          },
+          {
+            "name": "services_per_window",
+            "status": "PASS",
+            "detail": "windows_with_wrong_service_count=0, expected_per_window=12"
+          },
+          {
+            "name": "unique_service_rows",
+            "status": "PASS",
+            "detail": "duplicate_timestamp_service_rows=0"
+          },
+          {
+            "name": "expected_services",
+            "status": "PASS",
+            "detail": "missing=[], unexpected=[]"
+          },
+          {
+            "name": "missing_request_rate",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_cpu",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_memory",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "target_service_activity",
+            "status": "PASS",
+            "detail": "service=payment, active_fraction=1.0000, minimum=0.8000"
+          },
+          {
+            "name": "nonnegative_metrics",
+            "status": "PASS",
+            "detail": "negative_counts={}"
+          },
+          {
+            "name": "error_rate_bounds",
+            "status": "PASS",
+            "detail": "invalid_rows=0, bounds=[0,1.0]"
+          },
+          {
+            "name": "recovery_direction",
+            "status": "PASS",
+            "detail": "recovery_to_fault_latency_ratio=0.006267370723209617, maximum=0.5, recovery_ms=3.1659801060606085, fault_ms=505.1528377500001"
+          },
+          {
+            "name": "metadata_consistency",
+            "status": "PASS",
+            "detail": "metadata_rows=720, csv_rows=720, metadata_windows=60, csv_windows=60"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 5,
+      "fault_run_id": "payment_latency_500_005",
+      "recovery_run_id": "payment_latency_500_recovery_005",
+      "fault": {
+        "schema_version": 1,
+        "run_id": "payment_latency_500_005",
+        "condition": "fault",
+        "status": "PASS",
+        "research_valid": true,
+        "validated_at": "2026-08-16T18:45:56.963194+00:00",
+        "gates": [
+          {
+            "name": "required_columns",
+            "status": "PASS",
+            "detail": "all required columns present"
+          },
+          {
+            "name": "expected_windows",
+            "status": "PASS",
+            "detail": "actual=60, minimum=60, configured=60"
+          },
+          {
+            "name": "expected_rows",
+            "status": "PASS",
+            "detail": "actual=720, minimum=720, configured=720"
+          },
+          {
+            "name": "services_per_window",
+            "status": "PASS",
+            "detail": "windows_with_wrong_service_count=0, expected_per_window=12"
+          },
+          {
+            "name": "unique_service_rows",
+            "status": "PASS",
+            "detail": "duplicate_timestamp_service_rows=0"
+          },
+          {
+            "name": "expected_services",
+            "status": "PASS",
+            "detail": "missing=[], unexpected=[]"
+          },
+          {
+            "name": "missing_request_rate",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_cpu",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_memory",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "target_service_activity",
+            "status": "PASS",
+            "detail": "service=payment, active_fraction=1.0000, minimum=0.8000"
+          },
+          {
+            "name": "nonnegative_metrics",
+            "status": "PASS",
+            "detail": "negative_counts={}"
+          },
+          {
+            "name": "error_rate_bounds",
+            "status": "PASS",
+            "detail": "invalid_rows=0, bounds=[0,1.0]"
+          },
+          {
+            "name": "intervention_visible",
+            "status": "PASS",
+            "detail": "target_median_latency_ms=506.0069433833339, minimum=400.0"
+          },
+          {
+            "name": "metadata_consistency",
+            "status": "PASS",
+            "detail": "metadata_rows=720, csv_rows=720, metadata_windows=60, csv_windows=60"
+          }
+        ]
+      },
+      "recovery": {
+        "schema_version": 1,
+        "run_id": "payment_latency_500_recovery_005",
+        "condition": "recovery",
+        "status": "PASS",
+        "research_valid": true,
+        "validated_at": "2026-08-16T18:52:13.730987+00:00",
+        "gates": [
+          {
+            "name": "required_columns",
+            "status": "PASS",
+            "detail": "all required columns present"
+          },
+          {
+            "name": "expected_windows",
+            "status": "PASS",
+            "detail": "actual=60, minimum=60, configured=60"
+          },
+          {
+            "name": "expected_rows",
+            "status": "PASS",
+            "detail": "actual=720, minimum=720, configured=720"
+          },
+          {
+            "name": "services_per_window",
+            "status": "PASS",
+            "detail": "windows_with_wrong_service_count=0, expected_per_window=12"
+          },
+          {
+            "name": "unique_service_rows",
+            "status": "PASS",
+            "detail": "duplicate_timestamp_service_rows=0"
+          },
+          {
+            "name": "expected_services",
+            "status": "PASS",
+            "detail": "missing=[], unexpected=[]"
+          },
+          {
+            "name": "missing_request_rate",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_cpu",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_memory",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "target_service_activity",
+            "status": "PASS",
+            "detail": "service=payment, active_fraction=1.0000, minimum=0.8000"
+          },
+          {
+            "name": "nonnegative_metrics",
+            "status": "PASS",
+            "detail": "negative_counts={}"
+          },
+          {
+            "name": "error_rate_bounds",
+            "status": "PASS",
+            "detail": "invalid_rows=0, bounds=[0,1.0]"
+          },
+          {
+            "name": "recovery_direction",
+            "status": "PASS",
+            "detail": "recovery_to_fault_latency_ratio=0.011220294430995113, maximum=0.5, recovery_ms=5.677546888888881, fault_ms=506.0069433833339"
+          },
+          {
+            "name": "metadata_consistency",
+            "status": "PASS",
+            "detail": "metadata_rows=720, csv_rows=720, metadata_windows=60, csv_windows=60"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 6,
+      "fault_run_id": "payment_latency_500_006",
+      "recovery_run_id": "payment_latency_500_recovery_006",
+      "fault": {
+        "schema_version": 1,
+        "run_id": "payment_latency_500_006",
+        "condition": "fault",
+        "status": "PASS",
+        "research_valid": true,
+        "validated_at": "2026-08-16T18:58:20.713017+00:00",
+        "gates": [
+          {
+            "name": "required_columns",
+            "status": "PASS",
+            "detail": "all required columns present"
+          },
+          {
+            "name": "expected_windows",
+            "status": "PASS",
+            "detail": "actual=60, minimum=60, configured=60"
+          },
+          {
+            "name": "expected_rows",
+            "status": "PASS",
+            "detail": "actual=720, minimum=720, configured=720"
+          },
+          {
+            "name": "services_per_window",
+            "status": "PASS",
+            "detail": "windows_with_wrong_service_count=0, expected_per_window=12"
+          },
+          {
+            "name": "unique_service_rows",
+            "status": "PASS",
+            "detail": "duplicate_timestamp_service_rows=0"
+          },
+          {
+            "name": "expected_services",
+            "status": "PASS",
+            "detail": "missing=[], unexpected=[]"
+          },
+          {
+            "name": "missing_request_rate",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_cpu",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_memory",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "target_service_activity",
+            "status": "PASS",
+            "detail": "service=payment, active_fraction=1.0000, minimum=0.8000"
+          },
+          {
+            "name": "nonnegative_metrics",
+            "status": "PASS",
+            "detail": "negative_counts={}"
+          },
+          {
+            "name": "error_rate_bounds",
+            "status": "PASS",
+            "detail": "invalid_rows=0, bounds=[0,1.0]"
+          },
+          {
+            "name": "intervention_visible",
+            "status": "PASS",
+            "detail": "target_median_latency_ms=507.1612315833337, minimum=400.0"
+          },
+          {
+            "name": "metadata_consistency",
+            "status": "PASS",
+            "detail": "metadata_rows=720, csv_rows=720, metadata_windows=60, csv_windows=60"
+          }
+        ]
+      },
+      "recovery": {
+        "schema_version": 1,
+        "run_id": "payment_latency_500_recovery_006",
+        "condition": "recovery",
+        "status": "PASS",
+        "research_valid": true,
+        "validated_at": "2026-08-16T19:04:23.494413+00:00",
+        "gates": [
+          {
+            "name": "required_columns",
+            "status": "PASS",
+            "detail": "all required columns present"
+          },
+          {
+            "name": "expected_windows",
+            "status": "PASS",
+            "detail": "actual=60, minimum=60, configured=60"
+          },
+          {
+            "name": "expected_rows",
+            "status": "PASS",
+            "detail": "actual=720, minimum=720, configured=720"
+          },
+          {
+            "name": "services_per_window",
+            "status": "PASS",
+            "detail": "windows_with_wrong_service_count=0, expected_per_window=12"
+          },
+          {
+            "name": "unique_service_rows",
+            "status": "PASS",
+            "detail": "duplicate_timestamp_service_rows=0"
+          },
+          {
+            "name": "expected_services",
+            "status": "PASS",
+            "detail": "missing=[], unexpected=[]"
+          },
+          {
+            "name": "missing_request_rate",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_cpu",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_memory",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "target_service_activity",
+            "status": "PASS",
+            "detail": "service=payment, active_fraction=1.0000, minimum=0.8000"
+          },
+          {
+            "name": "nonnegative_metrics",
+            "status": "PASS",
+            "detail": "negative_counts={}"
+          },
+          {
+            "name": "error_rate_bounds",
+            "status": "PASS",
+            "detail": "invalid_rows=0, bounds=[0,1.0]"
+          },
+          {
+            "name": "recovery_direction",
+            "status": "PASS",
+            "detail": "recovery_to_fault_latency_ratio=0.009262491974858521, maximum=0.5, recovery_ms=4.697576837499993, fault_ms=507.1612315833337"
+          },
+          {
+            "name": "metadata_consistency",
+            "status": "PASS",
+            "detail": "metadata_rows=720, csv_rows=720, metadata_windows=60, csv_windows=60"
+          }
+        ]
+      }
+    }
+  ],
+  "finished_at": "2026-08-16T19:04:23.496920+00:00"
+}
