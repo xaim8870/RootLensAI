@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "experiment_id": "cart_latency_500",
+  "summary_scope": "accepted_official_pairs",
+  "baseline": {
+    "run_id": "healthy_pilot_001",
+    "service": "cart",
+    "metric": "latency_ms",
+    "aggregation": "median",
+    "value_ms": 11.880169677337477
+  },
+  "accepted_pair_count": 5,
+  "accepted_pairs": [
+    {
+      "pair_sequence": 2,
+      "fault": {
+        "run_id": "cart_latency_500_002",
+        "status": "PASS",
+        "research_valid": true,
+        "cart_median_latency_ms": 522.9974973026315
+      },
+      "recovery": {
+        "run_id": "cart_latency_500_recovery_002",
+        "status": "PASS",
+        "research_valid": true,
+        "cart_median_latency_ms": 19.220961490683216
+      },
+      "fault_minus_baseline_ms": 511.117327625294,
+      "recovery_to_fault_ratio": 0.03675153626894135
+    },
+    {
+      "pair_sequence": 3,
+      "fault": {
+        "run_id": "cart_latency_500_003",
+        "status": "PASS",
+        "research_valid": true,
+        "cart_median_latency_ms": 520.3684054347826
+      },
+      "recovery": {
+        "run_id": "cart_latency_500_recovery_003",
+        "status": "PASS",
+        "research_valid": true,
+        "cart_median_latency_ms": 10.200248864734286
+      },
+      "fault_minus_baseline_ms": 508.4882357574452,
+      "recovery_to_fault_ratio": 0.019601975750644752
+    },
+    {
+      "pair_sequence": 4,
+      "fault": {
+        "run_id": "cart_latency_500_004",
+        "status": "PASS",
+        "research_valid": true,
+        "cart_median_latency_ms": 516.7546703048786
+      },
+      "recovery": {
+        "run_id": "cart_latency_500_recovery_004",
+        "status": "PASS",
+        "research_valid": true,
+        "cart_median_latency_ms": 22.286362008456635
+      },
+      "fault_minus_baseline_ms": 504.8745006275411,
+      "recovery_to_fault_ratio": 0.04312754831089958
+    },
+    {
+      "pair_sequence": 5,
+      "fault": {
+        "run_id": "cart_latency_500_005",
+        "status": "PASS",
+        "research_valid": true,
+        "cart_median_latency_ms": 518.3690460329938
+      },
+      "recovery": {
+        "run_id": "cart_latency_500_recovery_005",
+        "status": "PASS",
+        "research_valid": true,
+        "cart_median_latency_ms": 14.93581936274511
+      },
+      "fault_minus_baseline_ms": 506.4888763556563,
+      "recovery_to_fault_ratio": 0.028813100390632618
+    },
+    {
+      "pair_sequence": 6,
+      "fault": {
+        "run_id": "cart_latency_500_006",
+        "status": "PASS",
+        "research_valid": true,
+        "cart_median_latency_ms": 527.7468049960668
+      },
+      "recovery": {
+        "run_id": "cart_latency_500_recovery_006",
+        "status": "PASS",
+        "research_valid": true,
+        "cart_median_latency_ms": 14.144203259838784
+      },
+      "fault_minus_baseline_ms": 515.8666353187293,
+      "recovery_to_fault_ratio": 0.026801115849378186
+    }
+  ],
+  "quarantined_runs": [
+    "cart_latency_500_001",
+    "cart_latency_500_recovery_001"
+  ]
+}
