@@ -5,3 +5,6 @@ workflow.txt
 responses.txt
 
 rootlens/.venv
+opentelemetry-demo/.venv
+rootlens/.venv
+opentelemetry-demo/.env.override
