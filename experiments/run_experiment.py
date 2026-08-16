@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import os
 import re
@@ -53,8 +54,11 @@ def validate_config(config: dict[str, Any]) -> None:
     if not isinstance(conditions, dict) or not all(isinstance(conditions.get(key), str) and conditions[key] for key in ("fault", "recovery")):
         raise ExperimentFailure("conditions.fault and conditions.recovery must be non-empty strings")
     verification = config["intervention"].get("verification", {})
-    if verification.get("method") != "node_env" or not verification.get("executable"):
-        raise ExperimentFailure("intervention verification must configure the supported node_env method and executable")
+    if verification.get("method") not in {"node_env", "shell_env"} or not verification.get("executable"):
+        raise ExperimentFailure("intervention verification must configure node_env or shell_env and an executable")
+    baseline = config["validation"].get("baseline_run_dir")
+    if baseline and not (REPO_ROOT / baseline / "metrics.csv").is_file():
+        raise ExperimentFailure(f"validation baseline dataset is missing: {baseline}")
     infra = config["infrastructure"]
     if infra.get("compose_files") != ["compose.yaml", "compose.observability.yaml"] or infra.get("env_files") != [".env", ".env.override"]:
         raise ExperimentFailure("RootLens requires both canonical Compose files and both environment files in order")
@@ -123,20 +127,27 @@ def set_target(config: dict[str, Any], value: str) -> None:
                 project, env=compose_env(config, value))
     variable = str(config["intervention"]["environment_variable"])
     verification = config["intervention"]["verification"]
-    script = f"console.log(JSON.stringify(process.env.{variable}))"
-    result = run_command(["docker", "exec", service, str(verification["executable"]), "-e", script],
-                         project, capture=True)
-    try:
-        actual = json.loads(result.stdout.strip())
-    except json.JSONDecodeError as exc:
-        raise ExperimentFailure(f"container environment verification returned invalid JSON: {result.stdout!r}") from exc
+    if verification["method"] == "node_env":
+        script = f"console.log(JSON.stringify(process.env.{variable}))"
+        command = ["docker", "exec", service, str(verification["executable"]), "-e", script]
+        result = run_command(command, project, capture=True)
+        try:
+            actual = json.loads(result.stdout.strip())
+        except json.JSONDecodeError as exc:
+            raise ExperimentFailure(f"container environment verification returned invalid JSON: {result.stdout!r}") from exc
+    else:
+        script = f'printf "%s" "${variable}"'
+        command = ["docker", "exec", service, str(verification["executable"]), "-c", script]
+        result = run_command(command, project, capture=True)
+        actual = result.stdout
     if actual != str(value):
         raise ExperimentFailure(f"container environment verification failed: expected {value!r}, got {actual!r}")
 
 
-def available_sequences(config: dict[str, Any], count: int) -> list[int]:
+def available_sequences(config: dict[str, Any], count: int, smoke: bool = False) -> list[int]:
     experiment_id = config["experiment_id"]
-    pattern = re.compile(rf"^{re.escape(experiment_id)}(?:_recovery)?_(\d{{3}})$")
+    prefix = str(config["smoke"]["run_id_prefix"]) if smoke else experiment_id
+    pattern = re.compile(rf"^{re.escape(prefix)}(?:_recovery)?_(\d{{3}})$")
     used = {int(match.group(1)) for path in DATA_ROOT.iterdir() if path.is_dir() and (match := pattern.fullmatch(path.name))}
     result: list[int] = []
     sequence = 1
@@ -182,24 +193,26 @@ def collect_and_validate(config: dict[str, Any], run_id: str, condition: str, co
     return result
 
 
-def planned_commands(config: dict[str, Any], repetitions: int) -> list[str]:
+def planned_commands(config: dict[str, Any], repetitions: int, fault_run_id: str = "<fault-run-id>", recovery_run_id: str = "<recovery-run-id>") -> list[str]:
     base = subprocess.list2cmdline(compose_base(config))
     service, variable = config["fault_service"], config["intervention"]["environment_variable"]
     verification = config["intervention"]["verification"]
-    verify_command = (
-        f'docker exec {service} {verification["executable"]} -e '
-        f'"console.log(JSON.stringify(process.env.{variable}))"'
-    )
+    if verification["method"] == "node_env":
+        verify_command = (f'docker exec {service} {verification["executable"]} -e '
+                          f'"console.log(JSON.stringify(process.env.{variable}))"')
+    else:
+        verify_command = (f'docker exec {service} {verification["executable"]} -c '
+                          f"'printf \"%s\" \"${variable}\"'")
     return [
         f"GET {config['infrastructure']['prometheus_url']}/-/ready",
         f"GET {config['infrastructure']['prometheus_url']}/api/v1/query?query=traces_span_metrics_calls_total",
         f"{base} ps --services --filter status=running",
         f'$env:{variable}="{config["intervention"]["fault_value"]}"; {base} up -d --no-deps --force-recreate {service}',
         verify_command,
-        subprocess.list2cmdline(collector_command(config, "<fault-run-id>", config["conditions"]["fault"])),
+        subprocess.list2cmdline(collector_command(config, fault_run_id, config["conditions"]["fault"])),
         f'$env:{variable}="{config["intervention"]["recovery_value"]}"; {base} up -d --no-deps --force-recreate {service}',
         verify_command,
-        subprocess.list2cmdline(collector_command(config, "<recovery-run-id>", config["conditions"]["recovery"])),
+        subprocess.list2cmdline(collector_command(config, recovery_run_id, config["conditions"]["recovery"])),
         f"Repeat paired sequence {repetitions} time(s); abort on first critical failure.",
     ]
 
@@ -208,21 +221,45 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", required=True, type=Path)
     parser.add_argument("--repetitions", type=int)
+    parser.add_argument("--smoke", action="store_true", help="run one configured short smoke fault/recovery pair")
     parser.add_argument("--dry-run", action="store_true", help="validate and print commands without Docker, Prometheus, sleeps, or collection")
     args = parser.parse_args()
     try:
         config = load_yaml(args.config.resolve())
         validate_config(config)
-        repetitions = args.repetitions if args.repetitions is not None else int(config["repetitions"])
+        if args.smoke:
+            if "smoke" not in config:
+                raise ExperimentFailure("configuration does not define smoke settings")
+            if args.repetitions not in (None, 1):
+                raise ExperimentFailure("smoke mode always runs exactly one fault/recovery pair")
+            config = copy.deepcopy(config)
+            smoke_duration = int(config["smoke"]["duration_seconds"])
+            if smoke_duration < 1:
+                raise ExperimentFailure("smoke.duration_seconds must be positive")
+            smoke_prefix = str(config["smoke"].get("run_id_prefix", ""))
+            if not re.fullmatch(r"[a-z0-9][a-z0-9_-]*", smoke_prefix):
+                raise ExperimentFailure("smoke.run_id_prefix contains unsafe characters")
+            config["collection"]["duration_seconds"] = smoke_duration
+            repetitions = 1
+        else:
+            repetitions = args.repetitions if args.repetitions is not None else int(config["repetitions"])
         if repetitions < 1:
             raise ExperimentFailure("repetitions must be at least 1")
         if args.dry_run:
+            sequences = available_sequences(config, repetitions, args.smoke)
+            if args.smoke:
+                prefix = config["smoke"]["run_id_prefix"]
+                fault_id = f"{prefix}_{sequences[0]:03d}"
+                recovery_id = f"{prefix}_recovery_{sequences[0]:03d}"
+            else:
+                fault_id = recovery_id = None
             print(json.dumps({"status": "DRY_RUN", "config": str(args.config.resolve()),
-                              "sequences": available_sequences(config, repetitions), "repetitions": repetitions,
-                              "commands": planned_commands(config, repetitions)}, indent=2))
+                              "mode": "smoke" if args.smoke else "official", "sequences": sequences,
+                              "repetitions": repetitions,
+                              "commands": planned_commands(config, repetitions, fault_id or "<fault-run-id>", recovery_id or "<recovery-run-id>")}, indent=2))
             return 0
 
-        sequences = available_sequences(config, repetitions)
+        sequences = available_sequences(config, repetitions, args.smoke)
         start_sequence = sequences[0]
         summary: dict[str, Any] = {"schema_version": 1, "experiment_id": config["experiment_id"],
                                   "started_at": datetime.now(timezone.utc).isoformat(), "status": "RUNNING", "runs": []}
@@ -231,13 +268,16 @@ def main() -> int:
             check_prometheus(config)
             check_services(config)
             for sequence in sequences:
-                fault_id = f"{config['experiment_id']}_{sequence:03d}"
-                recovery_id = f"{config['experiment_id']}_recovery_{sequence:03d}"
+                prefix = config["smoke"]["run_id_prefix"] if args.smoke else config["experiment_id"]
+                fault_id = f"{prefix}_{sequence:03d}"
+                recovery_id = f"{prefix}_recovery_{sequence:03d}"
                 pair: dict[str, Any] = {"sequence": sequence, "fault_run_id": fault_id, "recovery_run_id": recovery_id}
                 summary["runs"].append(pair)
                 fault_active = True
                 set_target(config, config["intervention"]["fault_value"])
-                fault_result = collect_and_validate(config, fault_id, "fault")
+                baseline = config["validation"].get("baseline_run_dir")
+                comparison = REPO_ROOT / baseline if baseline else None
+                fault_result = collect_and_validate(config, fault_id, "fault", comparison)
                 pair["fault"] = fault_result
                 set_target(config, config["intervention"]["recovery_value"])
                 fault_active = False
