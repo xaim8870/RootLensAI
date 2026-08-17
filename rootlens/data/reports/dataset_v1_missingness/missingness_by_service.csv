@@ -1,0 +1,13 @@
+service,rows,no_requests_rows,has_requests_rows,latency_missing,latency_missing_pct,latency_missing_no_requests,latency_missing_with_requests,error_rate_missing,error_rate_missing_pct,error_missing_no_requests,error_missing_with_requests
+ad,3300,648,2652,653,19.787879,648,5,648,19.636364,648,0
+cart,3300,0,3300,0,0.0,0,0,0,0.0,0,0
+checkout,3300,0,3300,0,0.0,0,0,0,0.0,0,0
+currency,3300,0,3300,0,0.0,0,0,0,0.0,0,0
+email,3300,45,3255,46,1.393939,45,1,45,1.363636,45,0
+frontend,3300,0,3300,0,0.0,0,0,0,0.0,0,0
+frontend-proxy,3300,0,3300,0,0.0,0,0,0,0.0,0,0
+payment,3300,47,3253,49,1.484848,47,2,47,1.424242,47,0
+product-catalog,3300,0,3300,0,0.0,0,0,0,0.0,0,0
+quote,3300,26,3274,27,0.818182,26,1,26,0.787879,26,0
+recommendation,3300,26,3274,28,0.848485,26,2,26,0.787879,26,0
+shipping,3300,25,3275,26,0.787879,25,1,25,0.757576,25,0

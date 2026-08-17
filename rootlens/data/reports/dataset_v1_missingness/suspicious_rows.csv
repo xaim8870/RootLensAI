@@ -1,0 +1,13 @@
+run_id,run_role,pair_id,fault_family,root_cause_service,timestamp,service,has_requests,request_rate,latency_ms,error_rate,error_rps,cpu,memory,latency_missing_with_requests,error_missing_with_requests
+healthy_pilot_001,healthy,,healthy,healthy,2026-08-15T22:27:24.955764+00:00,ad,1,0.0799808046068943,,0.0,0.0,1.0762346234998048,92.671875,True,False
+healthy_pilot_001,healthy,,healthy,healthy,2026-08-15T22:29:50.141196+00:00,ad,1,0.0399696230864542,,0.0,0.0,1.0914212526543003,93.07552083333334,True,False
+healthy_pilot_001,healthy,,healthy,healthy,2026-08-15T22:31:19.990006+00:00,ad,1,0.0799712103642688,,0.0,0.0,1.1039180350125162,93.2578125,True,False
+payment_latency_500_recovery_005,recovery,payment_latency_500_005,payment_latency_500,payment,2026-08-16T18:47:13.214493+00:00,payment,1,0.0679197994987468,,0.0,0.0,0.2381986541051488,61.97544642857142,True,False
+cart_latency_500_005,fault,cart_latency_500_005,cart_latency_500,cart,2026-08-16T21:42:05.318151+00:00,ad,1,0.0400384368994234,,0.0,0.0,3.471242871043166,95.10677083333331,True,False
+product_catalog_error_50_006,fault,product_catalog_error_50_006,product_catalog_error_50,product_catalog,2026-08-17T13:13:16.609603+00:00,payment,1,0.1200048001920076,,0.0,0.0,10.865306091261903,74.39453125,True,False
+product_catalog_error_50_006,fault,product_catalog_error_50_006,product_catalog_error_50,product_catalog,2026-08-17T13:13:16.609603+00:00,shipping,1,0.2400096003840153,,0.0,0.0,2.387131851779552,66.2890625,True,False
+product_catalog_error_50_006,fault,product_catalog_error_50_006,product_catalog_error_50,product_catalog,2026-08-17T13:13:16.609603+00:00,email,1,0.1200048001920076,,0.0,0.0,7.085113706221883,88.4375,True,False
+product_catalog_error_50_006,fault,product_catalog_error_50_006,product_catalog_error_50,product_catalog,2026-08-17T13:13:16.609603+00:00,ad,1,0.0400016000640025,,0.0,0.0,3.016438159579625,95.34114583333331,True,False
+product_catalog_error_50_006,fault,product_catalog_error_50_006,product_catalog_error_50,product_catalog,2026-08-17T13:13:16.609603+00:00,quote,1,0.0800032001280051,,0.0,0.0,4.547717178573526,72.1484375,True,False
+product_catalog_error_50_006,fault,product_catalog_error_50_006,product_catalog_error_50,product_catalog,2026-08-17T13:13:21.280458+00:00,recommendation,1,0.040009602304553,,0.0,0.0,6.150441402585127,12.70546875,True,False
+product_catalog_error_50_006,fault,product_catalog_error_50_006,product_catalog_error_50,product_catalog,2026-08-17T13:14:01.262702+00:00,recommendation,1,0.1600064002560102,,0.0,0.0,6.152607043734005,12.70546875,True,False

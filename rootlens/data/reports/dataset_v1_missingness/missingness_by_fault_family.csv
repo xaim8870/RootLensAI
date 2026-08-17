@@ -1,0 +1,7 @@
+fault_family,rows,no_requests_rows,has_requests_rows,latency_missing,latency_missing_pct,latency_missing_no_requests,latency_missing_with_requests,error_rate_missing,error_rate_missing_pct,error_missing_no_requests,error_missing_with_requests
+cart_latency_500,7200,171,7029,172,2.388889,171,1,171,2.375,171,0
+checkout_latency_500,7200,126,7074,126,1.75,126,0,126,1.75,126,0
+healthy,3600,38,3562,41,1.138889,38,3,38,1.055556,38,0
+payment_error_50,7200,103,7097,103,1.430556,103,0,103,1.430556,103,0
+payment_latency_500,7200,127,7073,128,1.777778,127,1,127,1.763889,127,0
+product_catalog_error_50,7200,252,6948,259,3.597222,252,7,252,3.5,252,0

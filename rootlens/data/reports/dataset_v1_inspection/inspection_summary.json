@@ -1,0 +1,48 @@
+{
+  "dataset_name": "rootlens_dataset_v1",
+  "dataset_version": "v1",
+  "git_commit": "00389ea245c557b388995e210eb9f227707b8d33",
+  "raw_data_root": "D:\\RootLensAI\\rootlens\\data\\raw",
+  "accepted_runs_expected": 55,
+  "accepted_runs_loaded": 55,
+  "total_rows_loaded": 39600,
+  "unique_columns": 9,
+  "all_columns": [
+    "cpu",
+    "error_rate",
+    "error_rps",
+    "has_requests",
+    "latency_ms",
+    "memory",
+    "request_rate",
+    "service",
+    "timestamp"
+  ],
+  "unique_schema_count": 1,
+  "most_common_schema_runs": 55,
+  "most_common_schema": [
+    "timestamp",
+    "service",
+    "request_rate",
+    "error_rate",
+    "latency_ms",
+    "cpu",
+    "memory",
+    "error_rps",
+    "has_requests"
+  ],
+  "candidate_feature_columns_for_review": [
+    "cpu",
+    "error_rate",
+    "error_rps",
+    "has_requests",
+    "latency_ms",
+    "memory",
+    "request_rate"
+  ],
+  "metadata_or_key_columns_for_review": [
+    "service",
+    "timestamp"
+  ],
+  "note": "Column classifications are heuristics for review only. No final ML feature set is selected by this script."
+}

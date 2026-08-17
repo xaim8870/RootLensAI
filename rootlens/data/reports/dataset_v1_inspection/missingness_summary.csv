@@ -1,0 +1,10 @@
+column,rows_where_column_present,missing_count,non_missing_count,missing_pct,review_class
+cpu,39600,0,39600,0.0,candidate_feature_review
+error_rate,39600,817,38783,2.063131,candidate_feature_review
+error_rps,39600,0,39600,0.0,candidate_feature_review
+has_requests,39600,0,39600,0.0,candidate_feature_review
+latency_ms,39600,829,38771,2.093434,candidate_feature_review
+memory,39600,0,39600,0.0,candidate_feature_review
+request_rate,39600,0,39600,0.0,candidate_feature_review
+service,39600,0,39600,0.0,entity_key_review
+timestamp,39600,0,39600,0.0,time_key_review

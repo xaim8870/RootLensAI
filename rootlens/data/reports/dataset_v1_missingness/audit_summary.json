@@ -1,0 +1,16 @@
+{
+  "dataset_name": "rootlens_dataset_v1",
+  "dataset_version": "v1",
+  "git_commit": "00389ea245c557b388995e210eb9f227707b8d33",
+  "rows_audited": 39600,
+  "latency_missing": 829,
+  "latency_missing_no_requests": 817,
+  "latency_missing_with_requests": 12,
+  "latency_missing_explained_by_no_requests_pct": 98.552473,
+  "error_rate_missing": 817,
+  "error_missing_no_requests": 817,
+  "error_missing_with_requests": 0,
+  "error_missing_explained_by_no_requests_pct": 100.0,
+  "suspicious_rows": 12,
+  "recommended_interpretation": "If missing latency/error_rate occurs only or overwhelmingly when has_requests == 0, treat missingness as telemetry semantics rather than collection failure. Preserve has_requests and use a deterministic imputation policy during feature construction."
+}

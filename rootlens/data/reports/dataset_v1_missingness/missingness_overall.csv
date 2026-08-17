@@ -1,0 +1,2 @@
+rows,no_requests_rows,has_requests_rows,latency_missing,latency_missing_pct,latency_missing_no_requests,latency_missing_with_requests,error_rate_missing,error_rate_missing_pct,error_missing_no_requests,error_missing_with_requests
+39600,817,38783,829,2.093434,817,12,817,2.063131,817,0

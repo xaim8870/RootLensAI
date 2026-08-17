@@ -1,0 +1,4 @@
+run_role,rows,no_requests_rows,has_requests_rows,latency_missing,latency_missing_pct,latency_missing_no_requests,latency_missing_with_requests,error_rate_missing,error_rate_missing_pct,error_missing_no_requests,error_missing_with_requests
+fault,18000,486,17514,494,2.744444,486,8,486,2.7,486,0
+healthy,3600,38,3562,41,1.138889,38,3,38,1.055556,38,0
+recovery,18000,293,17707,294,1.633333,293,1,293,1.627778,293,0

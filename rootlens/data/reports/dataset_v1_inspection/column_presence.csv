@@ -1,0 +1,10 @@
+column,runs_present,runs_total,presence_pct,dtype_variants,review_class
+cpu,55,55,100.0,float64:55,candidate_feature_review
+error_rate,55,55,100.0,float64:55,candidate_feature_review
+error_rps,55,55,100.0,float64:55,candidate_feature_review
+has_requests,55,55,100.0,int64:55,candidate_feature_review
+latency_ms,55,55,100.0,float64:55,candidate_feature_review
+memory,55,55,100.0,float64:55,candidate_feature_review
+request_rate,55,55,100.0,float64:55,candidate_feature_review
+service,55,55,100.0,object:55,entity_key_review
+timestamp,55,55,100.0,object:55,time_key_review

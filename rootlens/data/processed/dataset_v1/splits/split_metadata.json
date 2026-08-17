@@ -1,0 +1,71 @@
+{
+  "split_version": "v1",
+  "split_seed": 42,
+  "split_strategy": "run_level_stratified_fixed_allocation",
+  "grouping_key": "run_id",
+  "random_row_split_allowed": false,
+  "source_dataset": "D:\\RootLensAI\\rootlens\\data\\processed\\dataset_v1\\processed_dataset_v1.csv",
+  "source_dataset_sha256": "b1b6df044de5693df6ec865a87c6afc2ec89f88585a306f14b73b31a1291f4f0",
+  "expected_windows_per_run": 60,
+  "expected_total_runs": 30,
+  "run_counts_by_split": {
+    "train": 18,
+    "validation": 6,
+    "test": 6
+  },
+  "row_counts_by_split": {
+    "train": 1080,
+    "validation": 360,
+    "test": 360
+  },
+  "class_counts_by_split": {
+    "train": {
+      "cart": 3,
+      "checkout": 3,
+      "healthy": 3,
+      "payment": 6,
+      "product_catalog": 3
+    },
+    "validation": {
+      "cart": 1,
+      "checkout": 1,
+      "healthy": 1,
+      "payment": 2,
+      "product_catalog": 1
+    },
+    "test": {
+      "cart": 1,
+      "checkout": 1,
+      "healthy": 1,
+      "payment": 2,
+      "product_catalog": 1
+    }
+  },
+  "payment_fault_type_counts_by_split": {
+    "train": {
+      "error": 3,
+      "latency": 3
+    },
+    "validation": {
+      "error": 1,
+      "latency": 1
+    },
+    "test": {
+      "error": 1,
+      "latency": 1
+    }
+  },
+  "run_intersections": {
+    "train_validation": [],
+    "train_test": [],
+    "validation_test": []
+  },
+  "leakage_detected": false,
+  "split_definition_sha256": "77a643915ac0a2d7a2a76c15908c84f0b0b1111e938e69c8ef461ccfb3170ed9",
+  "artifacts": {
+    "split_definition": "D:\\RootLensAI\\rootlens\\data\\processed\\dataset_v1\\splits\\split_definition_v1.csv",
+    "train_csv": "D:\\RootLensAI\\rootlens\\data\\processed\\dataset_v1\\splits\\train.csv",
+    "validation_csv": "D:\\RootLensAI\\rootlens\\data\\processed\\dataset_v1\\splits\\validation.csv",
+    "test_csv": "D:\\RootLensAI\\rootlens\\data\\processed\\dataset_v1\\splits\\test.csv"
+  }
+}
