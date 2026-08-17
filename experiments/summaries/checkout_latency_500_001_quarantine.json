@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "experiment_id": "checkout_latency_500",
+  "pair_sequence": 1,
+  "disposition": "QUARANTINED",
+  "counted_as_accepted": false,
+  "fault_run": {
+    "run_id": "checkout_latency_500_001",
+    "validation_status": "PASS",
+    "validation_research_valid": true,
+    "protocol_research_disposition": "QUARANTINED",
+    "checkout_median_latency_ms": 840.8917433333118,
+    "checkout_nonzero_error_windows": []
+  },
+  "recovery_run": {
+    "run_id": "checkout_latency_500_recovery_001",
+    "validation_status": "PASS",
+    "validation_research_valid": true,
+    "protocol_research_disposition": "QUARANTINED",
+    "checkout_median_latency_ms": 346.8346641332687,
+    "checkout_nonzero_error_windows": [42, 43, 44, 45, 46]
+  },
+  "quarantine_reason": "Unexplained mid-run Checkout error burst during recovery, propagated to frontend and frontend-proxy; not attributable to the initial container-recreation transition.",
+  "evidence": {
+    "affected_windows": [42, 43, 44, 45, 46],
+    "first_affected_timestamp": "2026-08-17T00:16:25.532481+00:00",
+    "last_affected_timestamp": "2026-08-17T00:16:45.547314+00:00",
+    "first_clear_window": 47,
+    "checkout_error_rate_range": [0.076923, 0.142857],
+    "checkout_error_rps_approx": 0.04,
+    "propagated_services": ["frontend", "frontend-proxy"],
+    "existing_checkout_logs_identified_cause": false
+  },
+  "recovery_control": {
+    "environment_variable": "CHECKOUT_DELAY_MS",
+    "verified_value": "0",
+    "container_status": "running",
+    "container_health": "healthy"
+  }
+}

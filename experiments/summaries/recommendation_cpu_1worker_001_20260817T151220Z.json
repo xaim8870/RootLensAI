@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "experiment_id": "recommendation_cpu_1worker",
+  "started_at": "2026-08-17T15:10:03.677108+00:00",
+  "status": "FAIL",
+  "runs": [
+    {
+      "sequence": 1,
+      "fault_run_id": "recommendation_cpu_smoke_001",
+      "recovery_run_id": "recommendation_cpu_smoke_recovery_001"
+    }
+  ],
+  "error": "recommendation_cpu_smoke_001 validation failed: ['resource_intervention_visible', 'resource_increase', 'resource_consistency']",
+  "finished_at": "2026-08-17T15:12:20.142573+00:00"
+}

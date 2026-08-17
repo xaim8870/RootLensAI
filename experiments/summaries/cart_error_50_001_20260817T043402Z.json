@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "experiment_id": "cart_error_50",
+  "started_at": "2026-08-17T04:31:55.727704+00:00",
+  "status": "FAIL",
+  "runs": [
+    {
+      "sequence": 1,
+      "fault_run_id": "cart_error_smoke_001",
+      "recovery_run_id": "cart_error_smoke_recovery_001"
+    }
+  ],
+  "error": "cart_error_smoke_001 validation failed: ['error_intervention_visible', 'error_activity', 'error_window_fraction']",
+  "finished_at": "2026-08-17T04:34:02.361432+00:00"
+}

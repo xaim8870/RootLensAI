@@ -54,8 +54,8 @@ def validate_config(config: dict[str, Any]) -> None:
     if not isinstance(conditions, dict) or not all(isinstance(conditions.get(key), str) and conditions[key] for key in ("fault", "recovery")):
         raise ExperimentFailure("conditions.fault and conditions.recovery must be non-empty strings")
     verification = config["intervention"].get("verification", {})
-    if verification.get("method") not in {"node_env", "shell_env"} or not verification.get("executable"):
-        raise ExperimentFailure("intervention verification must configure node_env or shell_env and an executable")
+    if verification.get("method") not in {"node_env", "shell_env", "command_env"} or not verification.get("executable"):
+        raise ExperimentFailure("intervention verification must configure node_env, shell_env, or command_env and an executable")
     baseline = config["validation"].get("baseline_run_dir")
     if baseline and not (REPO_ROOT / baseline / "metrics.csv").is_file():
         raise ExperimentFailure(f"validation baseline dataset is missing: {baseline}")
@@ -135,9 +135,15 @@ def set_target(config: dict[str, Any], value: str) -> None:
             actual = json.loads(result.stdout.strip())
         except json.JSONDecodeError as exc:
             raise ExperimentFailure(f"container environment verification returned invalid JSON: {result.stdout!r}") from exc
-    else:
+    elif verification["method"] == "shell_env":
         script = f'printf "%s" "${variable}"'
         command = ["docker", "exec", service, str(verification["executable"]), "-c", script]
+        result = run_command(command, project, capture=True)
+        actual = result.stdout
+    else:
+        arguments = [str(item).replace("{environment_variable}", variable)
+                     for item in verification.get("arguments", [])]
+        command = ["docker", "exec", service, str(verification["executable"]), *arguments]
         result = run_command(command, project, capture=True)
         actual = result.stdout
     if actual != str(value):
@@ -200,9 +206,13 @@ def planned_commands(config: dict[str, Any], repetitions: int, fault_run_id: str
     if verification["method"] == "node_env":
         verify_command = (f'docker exec {service} {verification["executable"]} -e '
                           f'"console.log(JSON.stringify(process.env.{variable}))"')
-    else:
+    elif verification["method"] == "shell_env":
         verify_command = (f'docker exec {service} {verification["executable"]} -c '
                           f"'printf \"%s\" \"${variable}\"'")
+    else:
+        arguments = " ".join(str(item).replace("{environment_variable}", str(variable))
+                             for item in verification.get("arguments", []))
+        verify_command = f'docker exec {service} {verification["executable"]} {arguments}'.rstrip()
     return [
         f"GET {config['infrastructure']['prometheus_url']}/-/ready",
         f"GET {config['infrastructure']['prometheus_url']}/api/v1/query?query=traces_span_metrics_calls_total",

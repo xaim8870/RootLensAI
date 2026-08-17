@@ -1,0 +1,47 @@
+{
+  "run_id": "payment_error_50_003",
+  "condition": "payment_error_50pct",
+  "fault_service": "payment",
+  "fault_type": "error",
+  "duration_seconds": 300,
+  "sampling_interval_seconds": 5,
+  "warmup_seconds": 30,
+  "prometheus_url": "http://localhost:9090",
+  "promql_window": "30s",
+  "started_at": "2026-08-17T03:43:26.942601+00:00",
+  "services": [
+    "frontend",
+    "frontend-proxy",
+    "checkout",
+    "payment",
+    "cart",
+    "currency",
+    "shipping",
+    "product-catalog",
+    "recommendation",
+    "email",
+    "ad",
+    "quote"
+  ],
+  "feature_method": "promql_rate",
+  "feature_definitions": {
+    "request_rate": "SERVER span calls per second",
+    "error_rate": "ERROR SERVER span rate / all SERVER span rate",
+    "latency_ms": "mean SERVER span duration from rate(sum)/rate(count), excluding EventStream spans",
+    "cpu": "container_cpu_utilization_ratio",
+    "memory": "container_memory_percent_ratio"
+  },
+  "diagnostic_fields": [
+    "error_rps",
+    "has_requests"
+  ],
+  "promql_queries": {
+    "request_rate": "\n    sum by (service_name) (\n      rate(\n        traces_span_metrics_calls_total{\n          span_kind=\"SPAN_KIND_SERVER\"\n        }[30s]\n      )\n    )\n    ",
+    "error_rps": "\n    sum by (service_name) (\n      rate(\n        traces_span_metrics_calls_total{\n          span_kind=\"SPAN_KIND_SERVER\",\n          status_code=\"STATUS_CODE_ERROR\"\n        }[30s]\n      )\n    )\n    ",
+    "error_rate": "\n    (\n      sum by (service_name) (\n        rate(\n          traces_span_metrics_calls_total{\n            span_kind=\"SPAN_KIND_SERVER\",\n            status_code=\"STATUS_CODE_ERROR\"\n          }[30s]\n        )\n      )\n    )\n    /\n    clamp_min(\n      sum by (service_name) (\n        rate(\n          traces_span_metrics_calls_total{\n            span_kind=\"SPAN_KIND_SERVER\"\n          }[30s]\n        )\n      ),\n      1e-9\n    )\n    ",
+    "latency_ms": "\n    sum by (service_name) (\n      rate(\n        traces_span_metrics_duration_milliseconds_sum{\n          span_kind=\"SPAN_KIND_SERVER\",\n          span_name!~\".*EventStream.*\"\n        }[30s]\n      )\n    )\n    /\n    sum by (service_name) (\n      rate(\n        traces_span_metrics_duration_milliseconds_count{\n          span_kind=\"SPAN_KIND_SERVER\",\n          span_name!~\".*EventStream.*\"\n        }[30s]\n      )\n    )\n    "
+  },
+  "finished_at": "2026-08-17T03:48:57.039298+00:00",
+  "rows_collected": 720,
+  "windows_collected": 60
+}
