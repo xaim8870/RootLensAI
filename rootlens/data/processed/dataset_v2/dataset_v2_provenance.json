@@ -1,0 +1,33 @@
+{
+  "dataset_name": "rootlens_dataset_v2",
+  "dataset_version": "v2",
+  "freeze_status": "validated",
+  "build_source_git_commit": "f59d9b239d36e9d2f8f4338dde91b42b171c5dbb",
+  "experiment_protocol": "controlled_fault_protocol_v2",
+  "split_seed": 42,
+  "split_grouping_key": "run_id",
+  "sealed_test_policy": "structural_validation_only_before_model_evaluation",
+  "checksums_sha256": {
+    "manifest": "6a26615e79a85d099190532ad3d93d8af2150e8bb5388c527dcc2cf0d6c75f66",
+    "processed_dataset": "0db69e3d5acf4767530099974b53a36d78f7d4c5d709b49954e12250d4b8f70b",
+    "split_definition": "33467da3f8e13bb3d6108aaaa8fe41ecbedf4be4b6cfda679b3df9483d4601a8",
+    "service_graph": "4da3f703c632b219f1adedf8f43234272ed6afe22256ada3abffc082710a2c89",
+    "train_graphs": "0fd47b9847cd9d53eb03cd615e2320847b5c1980698fa4a671fd4cb2c7a7e8a3",
+    "validation_graphs": "5b962069740d9f4242326c5915c0dea5c0f3b60aa9afbb14a3bb779772b541fc",
+    "test_graphs": "3617c1c07c75a7901f9b8482d3ce3209c9487b01aa94100b41f16630fe14e4ad",
+    "graph_metadata": "441441624ff1d5b8a3e1e581e17b3db1a6601e96ec52a5e7192fdea5c5eba3d7",
+    "graph_preview": "cf71268883b8ac1485c3dc8d4f4b9ab3e4b66e562915e1f2bb418a2b63497e3b"
+  },
+  "integrity": {
+    "manifest_validation": "PASS",
+    "processed_dataset_validation": "PASS",
+    "grouped_split_validation": "PASS",
+    "graph_dataset_validation": "PASS",
+    "run_leakage_detected": false,
+    "accepted_official_runs": 75,
+    "accepted_service_window_rows": 54000,
+    "classifier_runs": 40,
+    "classifier_samples": 2400,
+    "graph_samples": 2400
+  }
+}
