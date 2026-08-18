@@ -1,0 +1,2 @@
+model,val_accuracy,val_macro_f1,val_weighted_f1
+graphsage_rca_v2_node_preserving,0.99375,0.9924026590693258,0.9937084520417853

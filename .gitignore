@@ -9,6 +9,11 @@ opentelemetry-demo/.venv
 rootlens/.venv
 opentelemetry-demo/.env.override
 experiments/__pycache__/
+**/__pycache__/
+*.pyc
+mlruns/
+rootlens/mlflow.db
+rootlens/data/runtime/
 
 Concepts.txt
 

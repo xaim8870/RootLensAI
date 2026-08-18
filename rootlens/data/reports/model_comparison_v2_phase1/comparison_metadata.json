@@ -1,0 +1,12 @@
+{
+  "dataset_version": "v2",
+  "scope": "validation_only",
+  "sealed_test_evaluated": false,
+  "comparison_mlflow_run_id": "d5f033f2cea740328970abc064dc383e",
+  "model_run_ids": {
+    "GraphSAGE v1": "080ca998214f41bb8f160ca4cf6260a8",
+    "Random Forest": "00867a23c26147959bcc7588ec7c3d83",
+    "Logistic Regression": "038e52d11c3042f991682ba28a723da0",
+    "Dummy Classifier": "24bedb31d7ff4ccbaf4a2802c9428d73"
+  }
+}

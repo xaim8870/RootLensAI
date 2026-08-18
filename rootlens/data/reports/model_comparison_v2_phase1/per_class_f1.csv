@@ -1,0 +1,21 @@
+model,class,f1
+Random Forest,healthy,0.0
+Random Forest,payment,0.8
+Random Forest,cart,1.0
+Random Forest,checkout,1.0
+Random Forest,product_catalog,1.0
+Logistic Regression,healthy,0.0
+Logistic Regression,payment,0.8
+Logistic Regression,cart,1.0
+Logistic Regression,checkout,0.99581589958159
+Logistic Regression,product_catalog,1.0
+Dummy Classifier,healthy,0.0
+Dummy Classifier,payment,0.0
+Dummy Classifier,cart,0.0
+Dummy Classifier,checkout,0.4
+Dummy Classifier,product_catalog,0.0
+GraphSAGE v1,healthy,0.7368421052631579
+GraphSAGE v1,payment,0.918918918918919
+GraphSAGE v1,cart,1.0
+GraphSAGE v1,checkout,0.963855421686747
+GraphSAGE v1,product_catalog,0.9873417721518988

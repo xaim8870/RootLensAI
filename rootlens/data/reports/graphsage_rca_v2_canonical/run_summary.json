@@ -1,0 +1,20 @@
+{
+  "mlflow_run_id": "c5b8c95fd91d4ce2ab27df44e846ddec",
+  "device": "cpu",
+  "gpu": null,
+  "parameter_count": 61445,
+  "best_epoch": 4,
+  "epochs_completed": 29,
+  "best_validation_accuracy": 0.99375,
+  "best_validation_macro_f1": 0.9924026590693258,
+  "best_validation_weighted_f1": 0.9937084520417853,
+  "test_set_evaluated": false,
+  "comparison": [
+    {
+      "model": "graphsage_rca_v2_node_preserving",
+      "val_accuracy": 0.99375,
+      "val_macro_f1": 0.9924026590693258,
+      "val_weighted_f1": 0.9937084520417853
+    }
+  ]
+}

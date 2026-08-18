@@ -1,0 +1,13 @@
+{
+  "mlflow_run_id": "080ca998214f41bb8f160ca4cf6260a8",
+  "device": "cpu",
+  "device_name": "CPU",
+  "best_epoch": 21,
+  "epochs_completed": 41,
+  "best_validation_accuracy": 0.9395833333333333,
+  "best_validation_macro_f1": 0.9213916436041446,
+  "best_validation_weighted_f1": 0.934634291347286,
+  "best_validation_loss": 0.262779575586319,
+  "test_set_evaluated": false,
+  "random_forest_validation_macro_f1_reference": 0.76
+}
