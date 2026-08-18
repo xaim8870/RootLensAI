@@ -9,3 +9,14 @@ opentelemetry-demo/.venv
 rootlens/.venv
 opentelemetry-demo/.env.override
 experiments/__pycache__/
+
+Concepts.txt
+
+!!!!!!!!!!-------------!!!!!!!!!!!!!
+We used codex because there was a lot of repotitions Engineering:
+Docker commands
+service modifications
+experiment execution
+validation
+config generation
+repeated collection

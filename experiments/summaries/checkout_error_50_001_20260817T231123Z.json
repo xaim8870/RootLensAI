@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "experiment_id": "checkout_error_50",
+  "started_at": "2026-08-17T23:10:36.314533+00:00",
+  "status": "FAIL",
+  "runs": [
+    {
+      "sequence": 1,
+      "fault_run_id": "checkout_error_smoke_v2_001",
+      "recovery_run_id": "checkout_error_smoke_v2_recovery_001"
+    }
+  ],
+  "error": "command failed: panic: unsupported environment variable \"CHECKOUT_FAILURE_RATE\"\n\ngoroutine 1 [running]:\nmain.main()\n\t/usr/src/app/main.go:165 +0x1386",
+  "emergency_recovery_error": "command failed: panic: unsupported environment variable \"CHECKOUT_FAILURE_RATE\"\n\ngoroutine 1 [running]:\nmain.main()\n\t/usr/src/app/main.go:165 +0x1386",
+  "finished_at": "2026-08-17T23:11:23.098821+00:00"
+}

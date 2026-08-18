@@ -1,0 +1,53 @@
+schema_version: 1
+experiment_id: product_catalog_latency_500
+fault_service: product-catalog
+fault_type: latency
+fault_magnitude: 500ms_get_product
+
+conditions:
+  fault: product_catalog_latency_500ms
+  recovery: recovery_after_product_catalog_latency_500ms
+
+intervention:
+  environment_variable: PRODUCT_CATALOG_DELAY_MS
+  fault_value: "500"
+  recovery_value: "0"
+  verification:
+    method: command_env
+    executable: /usr/src/app/product-catalog
+    arguments: [--print-env, "{environment_variable}"]
+
+collection: {duration_seconds: 300, sampling_interval_seconds: 5, warmup_seconds: 30, promql_window: 30s}
+smoke: {duration_seconds: 60, run_id_prefix: product_catalog_latency_smoke_v2}
+repetitions: 1
+expected_services: [frontend, frontend-proxy, checkout, payment, cart, currency, shipping, product-catalog, recommendation, email, ad, quote]
+
+recovery_readiness:
+  workload_service: load-generator
+  probe_service: frontend-proxy
+  promql_window: 30s
+  minimum_request_rate: 0.1
+  consecutive_successes: 2
+  poll_interval_seconds: 5
+  timeout_seconds: 120
+
+validation:
+  # Accepted healthy Product Catalog medians span 27-74 ms. A deterministic
+  # +500 ms delay should exceed 400 ms and add at least 300 ms despite normal jitter.
+  baseline_run_dir: rootlens/data/raw/healthy_pilot_001
+  minimum_window_fraction: 1.0
+  maximum_missing_request_rate_fraction: 0.05
+  maximum_missing_cpu_fraction: 0.05
+  maximum_missing_memory_fraction: 0.05
+  minimum_target_active_fraction: 0.8
+  minimum_fault_target_latency_ms: 400
+  minimum_latency_increase_ms: 300
+  maximum_recovery_to_fault_latency_ratio: 0.30
+  maximum_error_rate: 1.0
+
+infrastructure:
+  prometheus_url: http://localhost:9090
+  prometheus_max_sample_age_seconds: 60
+  compose_project_directory: opentelemetry-demo
+  compose_files: [compose.yaml, compose.observability.yaml]
+  env_files: [.env, .env.override]

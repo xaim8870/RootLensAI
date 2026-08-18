@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "experiment_id": "product_catalog_latency_500",
+  "started_at": "2026-08-18T01:39:45.678441+00:00",
+  "status": "FAIL",
+  "runs": [],
+  "error": "command failed: [WinError 5] Access is denied",
+  "finished_at": "2026-08-18T01:39:46.755654+00:00"
+}

@@ -1,0 +1,45 @@
+schema_version: 1
+experiment_id: checkout_error_50
+fault_service: checkout
+fault_type: error
+fault_magnitude: 50_percent_place_order
+
+conditions:
+  fault: checkout_error_50pct
+  recovery: recovery_after_checkout_error_50pct
+
+intervention:
+  environment_variable: CHECKOUT_FAILURE_RATE
+  fault_value: "0.5"
+  recovery_value: "0"
+  verification:
+    method: command_env
+    executable: /usr/src/app/checkout
+    arguments: [--print-env, "{environment_variable}"]
+
+collection: {duration_seconds: 300, sampling_interval_seconds: 5, warmup_seconds: 30, promql_window: 30s}
+smoke: {duration_seconds: 60, run_id_prefix: checkout_error_smoke_v2}
+repetitions: 1
+expected_services: [frontend, frontend-proxy, checkout, payment, cart, currency, shipping, product-catalog, recommendation, email, ad, quote]
+
+validation:
+  # Five accepted healthy runs had zero Checkout errors and mean activity of
+  # 0.26-0.34 requests/s; a 50% intervention should comfortably exceed these gates.
+  minimum_window_fraction: 1.0
+  maximum_missing_request_rate_fraction: 0.05
+  maximum_missing_cpu_fraction: 0.05
+  maximum_missing_memory_fraction: 0.05
+  minimum_target_active_fraction: 0.8
+  maximum_error_rate: 1.0
+  minimum_fault_target_error_rate: 0.20
+  minimum_fault_target_error_rps: 0.05
+  minimum_fault_error_window_fraction: 0.80
+  maximum_recovery_target_error_rate: 0.05
+  maximum_recovery_to_fault_error_ratio: 0.20
+
+infrastructure:
+  prometheus_url: http://localhost:9090
+  prometheus_max_sample_age_seconds: 60
+  compose_project_directory: opentelemetry-demo
+  compose_files: [compose.yaml, compose.observability.yaml]
+  env_files: [.env, .env.override]
