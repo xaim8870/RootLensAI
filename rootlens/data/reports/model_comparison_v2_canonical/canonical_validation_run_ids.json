@@ -1,0 +1,69 @@
+{
+  "dataset": "v2",
+  "split_seed": 42,
+  "split_definition_sha256": "33467da3f8e13bb3d6108aaaa8fe41ecbedf4be4b6cfda679b3df9483d4601a8",
+  "sample_counts": {
+    "train": 1440,
+    "validation": 480,
+    "test": 480
+  },
+  "run_counts": {
+    "train": 24,
+    "validation": 8,
+    "test": 8
+  },
+  "runs": {
+    "train": [
+      "cart_latency_500_002",
+      "cart_latency_500_004",
+      "cart_latency_500_005",
+      "checkout_error_50_002",
+      "checkout_error_50_003",
+      "checkout_error_50_004",
+      "checkout_latency_500_003",
+      "checkout_latency_500_004",
+      "checkout_latency_500_005",
+      "healthy_baseline_005",
+      "healthy_control_cart_context_001",
+      "healthy_control_checkout_context_001",
+      "payment_error_50_001",
+      "payment_error_50_002",
+      "payment_error_50_005",
+      "payment_latency_500_001",
+      "payment_latency_500_003",
+      "payment_latency_500_005",
+      "product_catalog_error_50_003",
+      "product_catalog_error_50_005",
+      "product_catalog_error_50_006",
+      "product_catalog_latency_500_002",
+      "product_catalog_latency_500_003",
+      "product_catalog_latency_500_004"
+    ],
+    "validation": [
+      "cart_latency_500_006",
+      "checkout_error_50_005",
+      "checkout_latency_500_002",
+      "healthy_pilot_001",
+      "payment_error_50_003",
+      "payment_latency_500_004",
+      "product_catalog_error_50_001",
+      "product_catalog_latency_500_005"
+    ],
+    "test": [
+      "cart_latency_500_003",
+      "checkout_error_50_001",
+      "checkout_latency_500_006",
+      "healthy_baseline_004",
+      "payment_error_50_004",
+      "payment_latency_500_006",
+      "product_catalog_error_50_002",
+      "product_catalog_latency_500_006"
+    ]
+  },
+  "run_intersections": {
+    "train_validation": [],
+    "train_test": [],
+    "validation_test": []
+  },
+  "sealed_test_usage": "structural membership audit only; no inference or metrics"
+}

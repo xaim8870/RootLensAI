@@ -1,0 +1,11 @@
+streamlit>=1.40,<2
+torch>=2
+torch-geometric>=2
+requests>=2,<3
+pandas>=2,<3
+numpy>=2,<3
+PyYAML>=6,<7
+huggingface-hub>=0.34,<2
+sentence-transformers>=3,<6
+scikit-learn>=1.5,<2
+python-dotenv>=1,<2

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "bundle_status": "frozen",
+  "model_name": "GraphSAGE RCA v2 node-preserving",
+  "architecture": "2-layer residual GraphSAGE -> ordered 12-node embedding concatenation -> MLP classifier",
+  "parameter_count": 61445,
+  "dataset_version": "v2",
+  "dataset_freeze_git_commit": "db0829bf4b08be8cc500b01f216b5c827161fb13",
+  "mlflow_run_id": "c5b8c95fd91d4ce2ab27df44e846ddec",
+  "checkpoint_path": "rootlens/data/reports/graphsage_rca_v2_canonical/best_graphsage_rca_v2_state_dict.pt",
+  "checkpoint_sha256": "9ea50cb9985bfedb1986f16e5c28b23e1534115b71211ced0b4c09b7aa0c7121",
+  "normalization_path": "rootlens/data/reports/graphsage_rca_v2_canonical/feature_normalization.json",
+  "normalization_sha256": "ab3d483bde7d6591f6261a226bf9860c8413f46e3be880bccb5ed3ed396dcd5b",
+  "normalization_source": "Dataset v2 canonical training graphs only",
+  "topology_config_path": "rootlens/config/service_graph_v1.yaml",
+  "topology_sha256": "4da3f703c632b219f1adedf8f43234272ed6afe22256ada3abffc082710a2c89",
+  "graph_metadata_path": "rootlens/data/processed/dataset_v2/graphs/graph_dataset_metadata.json",
+  "graph_metadata_sha256": "441441624ff1d5b8a3e1e581e17b3db1a6601e96ec52a5e7192fdea5c5eba3d7",
+  "expected_nodes": 12,
+  "expected_node_features": 7,
+  "expected_message_passing_edges": 44,
+  "node_order": [
+    "frontend",
+    "frontend-proxy",
+    "checkout",
+    "payment",
+    "cart",
+    "currency",
+    "shipping",
+    "product-catalog",
+    "recommendation",
+    "email",
+    "ad",
+    "quote"
+  ],
+  "feature_order": [
+    "cpu",
+    "memory",
+    "request_rate",
+    "has_requests",
+    "latency_ms",
+    "error_rps",
+    "error_rate"
+  ],
+  "class_to_index": {
+    "healthy": 0,
+    "payment": 1,
+    "cart": 2,
+    "checkout": 3,
+    "product_catalog": 4
+  },
+  "sealed_test_evaluated": false,
+  "default_device": "cpu",
+  "promql_window": "30s",
+  "missingness_policy": {
+    "latency_ms": "fill_missing_with_0",
+    "error_rate": "fill_missing_with_0",
+    "other_features": "reject_missing"
+  }
+}

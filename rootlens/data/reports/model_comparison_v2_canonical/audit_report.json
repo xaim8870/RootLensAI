@@ -1,0 +1,73 @@
+{
+  "status": "PASS",
+  "dataset_version": "v2",
+  "canonical_split_checksum": "33467da3f8e13bb3d6108aaaa8fe41ecbedf4be4b6cfda679b3df9483d4601a8",
+  "canonical_counts": {
+    "train": {
+      "samples": 1440,
+      "runs": 24
+    },
+    "validation": {
+      "samples": 480,
+      "runs": 8
+    },
+    "test": {
+      "samples": 480,
+      "runs": 8
+    }
+  },
+  "leakage_checks": {
+    "run_intersections": {
+      "train_validation": [],
+      "train_test": [],
+      "validation_test": []
+    },
+    "recovery_runs_in_supervised_data": false,
+    "validation_used_for_preprocessing_fit": false,
+    "test_inference": false,
+    "test_metrics": false,
+    "consistent_label_mapping": true
+  },
+  "discrepancy_360_samples": {
+    "classification": "NOT COMPARABLE",
+    "cause": "The newer experiment loaded Dataset v1 graph artifacts and hard-coded 1080/18 train plus 360/6 validation expectations.",
+    "old_mlflow_run_id": "8a183206780d4b4883ebf9cfe4625b06",
+    "old_dataset_version": "v1",
+    "old_validation_samples": 360,
+    "old_validation_runs": [
+      "cart_latency_500_006",
+      "checkout_latency_500_002",
+      "healthy_pilot_001",
+      "payment_error_50_004",
+      "payment_latency_500_001",
+      "product_catalog_error_50_006"
+    ],
+    "frozen_v2_validation_runs": [
+      "cart_latency_500_006",
+      "checkout_error_50_005",
+      "checkout_latency_500_002",
+      "healthy_pilot_001",
+      "payment_error_50_003",
+      "payment_latency_500_004",
+      "product_catalog_error_50_001",
+      "product_catalog_latency_500_005"
+    ],
+    "intersection": [
+      "cart_latency_500_006",
+      "checkout_latency_500_002",
+      "healthy_pilot_001"
+    ],
+    "missing_from_newer_experiment": [
+      "checkout_error_50_005",
+      "payment_error_50_003",
+      "payment_latency_500_004",
+      "product_catalog_error_50_001",
+      "product_catalog_latency_500_005"
+    ],
+    "unexpected_in_newer_experiment": [
+      "payment_error_50_004",
+      "payment_latency_500_001",
+      "product_catalog_error_50_006"
+    ]
+  }
+}

@@ -1,3 +1,6 @@
+.env
+.env.*
+!.env.example
 Commit_hash.txt
 Errors.txt
 Resources.md
@@ -9,3 +12,20 @@ opentelemetry-demo/.venv
 rootlens/.venv
 opentelemetry-demo/.env.override
 experiments/__pycache__/
+**/__pycache__/
+*.pyc
+mlruns/
+rootlens/mlflow.db
+rootlens/data/runtime/
+rootlens/rag/indexes/text_index/model_cache/
+
+Concepts.txt
+
+!!!!!!!!!!-------------!!!!!!!!!!!!!
+We used codex because there was a lot of repotitions Engineering:
+Docker commands
+service modifications
+experiment execution
+validation
+config generation
+repeated collection

@@ -1,0 +1,26 @@
+model,class,precision,recall,f1
+Dummy Classifier,healthy,0.0,0.0,0.0
+Dummy Classifier,payment,0.0,0.0,0.0
+Dummy Classifier,cart,0.0,0.0,0.0
+Dummy Classifier,checkout,0.25,1.0,0.4
+Dummy Classifier,product_catalog,0.0,0.0,0.0
+Logistic Regression,healthy,0.0,0.0,0.0
+Logistic Regression,payment,0.6666666666666666,1.0,0.8
+Logistic Regression,cart,1.0,1.0,1.0
+Logistic Regression,checkout,1.0,0.9916666666666667,0.99581589958159
+Logistic Regression,product_catalog,1.0,1.0,1.0
+Random Forest,healthy,0.0,0.0,0.0
+Random Forest,payment,0.6666666666666666,1.0,0.8
+Random Forest,cart,1.0,1.0,1.0
+Random Forest,checkout,1.0,1.0,1.0
+Random Forest,product_catalog,1.0,1.0,1.0
+GraphSAGE v1 mean-pool,healthy,1.0,0.5833333333333334,0.7368421052631579
+GraphSAGE v1 mean-pool,payment,0.8561151079136691,0.9916666666666667,0.918918918918919
+GraphSAGE v1 mean-pool,cart,1.0,1.0,1.0
+GraphSAGE v1 mean-pool,checkout,0.9302325581395349,1.0,0.963855421686747
+GraphSAGE v1 mean-pool,product_catalog,1.0,0.975,0.9873417721518988
+GraphSAGE RCA v2 node-preserving,healthy,1.0,0.95,0.9743589743589743
+GraphSAGE RCA v2 node-preserving,payment,0.975609756097561,1.0,0.9876543209876543
+GraphSAGE RCA v2 node-preserving,cart,1.0,1.0,1.0
+GraphSAGE RCA v2 node-preserving,checkout,1.0,1.0,1.0
+GraphSAGE RCA v2 node-preserving,product_catalog,1.0,1.0,1.0

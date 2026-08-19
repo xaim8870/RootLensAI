@@ -1,0 +1,219 @@
+{
+  "graph_dataset_version": "v1",
+  "source_graph_name": "rootlens_service_graph_v1",
+  "source_graph_version": "v1",
+  "service_graph_sha256": "4da3f703c632b219f1adedf8f43234272ed6afe22256ada3abffc082710a2c89",
+  "graph_task": "graph_level_root_cause_service_classification",
+  "node_order": [
+    "frontend",
+    "frontend-proxy",
+    "checkout",
+    "payment",
+    "cart",
+    "currency",
+    "shipping",
+    "product-catalog",
+    "recommendation",
+    "email",
+    "ad",
+    "quote"
+  ],
+  "node_features": [
+    "cpu",
+    "memory",
+    "request_rate",
+    "has_requests",
+    "latency_ms",
+    "error_rps",
+    "error_rate"
+  ],
+  "class_to_index": {
+    "healthy": 0,
+    "payment": 1,
+    "cart": 2,
+    "checkout": 3,
+    "product_catalog": 4
+  },
+  "index_to_class": {
+    "0": "healthy",
+    "1": "payment",
+    "2": "cart",
+    "3": "checkout",
+    "4": "product_catalog"
+  },
+  "node_count": 12,
+  "node_feature_count": 7,
+  "directed_call_edges": 16,
+  "message_passing_edge_count": 44,
+  "message_passing_policy": {
+    "bidirectional": true,
+    "self_loops": true
+  },
+  "edge_index": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      3,
+      3,
+      4,
+      4,
+      4,
+      5,
+      5,
+      5,
+      6,
+      6,
+      6,
+      6,
+      7,
+      7,
+      7,
+      7,
+      8,
+      8,
+      8,
+      9,
+      9,
+      10,
+      10,
+      11,
+      11
+    ],
+    [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      0,
+      1,
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      2,
+      3,
+      0,
+      2,
+      4,
+      0,
+      2,
+      5,
+      0,
+      2,
+      6,
+      11,
+      0,
+      2,
+      7,
+      8,
+      0,
+      7,
+      8,
+      2,
+      9,
+      0,
+      10,
+      6,
+      11
+    ]
+  ],
+  "split_audits": {
+    "train": {
+      "graphs": 1080,
+      "runs": 18,
+      "class_counts": {
+        "healthy": 180,
+        "payment": 360,
+        "cart": 180,
+        "checkout": 180,
+        "product_catalog": 180
+      },
+      "node_feature_shape": [
+        12,
+        7
+      ],
+      "edge_count": 44
+    },
+    "validation": {
+      "graphs": 360,
+      "runs": 6,
+      "class_counts": {
+        "healthy": 60,
+        "payment": 120,
+        "cart": 60,
+        "checkout": 60,
+        "product_catalog": 60
+      },
+      "node_feature_shape": [
+        12,
+        7
+      ],
+      "edge_count": 44
+    },
+    "test": {
+      "graphs": 360,
+      "runs": 6,
+      "class_counts": {
+        "healthy": 60,
+        "payment": 120,
+        "cart": 60,
+        "checkout": 60,
+        "product_catalog": 60
+      },
+      "node_feature_shape": [
+        12,
+        7
+      ],
+      "edge_count": 44
+    }
+  },
+  "run_intersections": {
+    "train_validation": [],
+    "train_test": [],
+    "validation_test": []
+  },
+  "leakage_detected": false,
+  "source_split_csv_sha256": {
+    "train": "1c1b8525576a7672e169e047392701f6f9ca7b83bf698bdbd7953268d4b5987d",
+    "validation": "b5a0955472a8dab118a87797ddeade72b65df06dadcbcd1195a5a071e71993fd",
+    "test": "05c144c4788338ab4f5b87785c7090e144f82f307cfba9aacd4cf47ee2668cc7"
+  },
+  "artifacts": {
+    "train_graphs": "D:\\RootLensAI\\rootlens\\data\\processed\\dataset_v1\\graphs\\train_graphs.pt",
+    "validation_graphs": "D:\\RootLensAI\\rootlens\\data\\processed\\dataset_v1\\graphs\\validation_graphs.pt",
+    "test_graphs": "D:\\RootLensAI\\rootlens\\data\\processed\\dataset_v1\\graphs\\test_graphs.pt",
+    "preview": "D:\\RootLensAI\\rootlens\\data\\processed\\dataset_v1\\graphs\\graph_preview.json"
+  },
+  "loading_note": "Load .pt graph lists with torch.load(path, weights_only=False).",
+  "graph_artifact_sha256": {
+    "train": "089d84413c03235a2695cc203950514909d620702eba41704292f03db42b15b6",
+    "validation": "ab84a0e813f5e9457b134882132296eef9a2fa299479071bf75bac15983f888e",
+    "test": "c1dd4c00646c8a0daaf5a87294b9638cb30331ed4968ce2d22cdea11b518effd"
+  }
+}

@@ -1,0 +1,532 @@
+schema_version: 1
+dataset:
+  name: rootlens_dataset_v2
+  version: v2
+  status: frozen
+  description: RootLens AI Dataset v2 extending the frozen Dataset v1 controlled-fault telemetry manifest.
+  raw_data_root: rootlens/data/raw
+  git_commit: f59d9b239d36e9d2f8f4338dde91b42b171c5dbb
+  parent_dataset: rootlens_dataset_v1
+  parent_manifest: rootlens/data/manifests/dataset_v1.yaml
+  experiment_protocol: controlled_fault_protocol_v2
+collection_protocol:
+  run_duration_seconds: 300
+  sampling_interval_seconds: 5
+  promql_window_seconds: 30
+  collector_warmup_seconds: 30
+  expected_windows_per_run: 60
+  expected_services_per_window: 12
+  expected_rows_per_run: 720
+services:
+- frontend
+- frontend-proxy
+- checkout
+- payment
+- cart
+- currency
+- shipping
+- product-catalog
+- recommendation
+- email
+- ad
+- quote
+expected_totals:
+  accepted_healthy_runs: 5
+  accepted_fault_pairs: 35
+  accepted_fault_runs: 35
+  accepted_recovery_runs: 35
+  accepted_runs_total: 75
+  expected_rows_total: 54000
+accepted:
+  healthy:
+  - run_id: healthy_pilot_001
+    condition: healthy
+  - run_id: healthy_control_cart_context_001
+    condition: healthy
+  - run_id: healthy_control_checkout_context_001
+    condition: healthy
+  - run_id: healthy_baseline_004
+    condition: healthy
+  - run_id: healthy_baseline_005
+    condition: healthy
+  fault_pairs:
+  - pair_id: payment_latency_500_001
+    fault_family: payment_latency_500
+    root_cause_service: payment
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: payment_latency_500_001
+    recovery_run_id: payment_latency_500_recovery_002
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: payment_latency_500_003
+    fault_family: payment_latency_500
+    root_cause_service: payment
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: payment_latency_500_003
+    recovery_run_id: payment_latency_500_recovery_003
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: payment_latency_500_004
+    fault_family: payment_latency_500
+    root_cause_service: payment
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: payment_latency_500_004
+    recovery_run_id: payment_latency_500_recovery_004
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: payment_latency_500_005
+    fault_family: payment_latency_500
+    root_cause_service: payment
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: payment_latency_500_005
+    recovery_run_id: payment_latency_500_recovery_005
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: payment_latency_500_006
+    fault_family: payment_latency_500
+    root_cause_service: payment
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: payment_latency_500_006
+    recovery_run_id: payment_latency_500_recovery_006
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: cart_latency_500_002
+    fault_family: cart_latency_500
+    root_cause_service: cart
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: cart_latency_500_002
+    recovery_run_id: cart_latency_500_recovery_002
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: cart_latency_500_003
+    fault_family: cart_latency_500
+    root_cause_service: cart
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: cart_latency_500_003
+    recovery_run_id: cart_latency_500_recovery_003
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: cart_latency_500_004
+    fault_family: cart_latency_500
+    root_cause_service: cart
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: cart_latency_500_004
+    recovery_run_id: cart_latency_500_recovery_004
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: cart_latency_500_005
+    fault_family: cart_latency_500
+    root_cause_service: cart
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: cart_latency_500_005
+    recovery_run_id: cart_latency_500_recovery_005
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: cart_latency_500_006
+    fault_family: cart_latency_500
+    root_cause_service: cart
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: cart_latency_500_006
+    recovery_run_id: cart_latency_500_recovery_006
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: checkout_latency_500_002
+    fault_family: checkout_latency_500
+    root_cause_service: checkout
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: checkout_latency_500_002
+    recovery_run_id: checkout_latency_500_recovery_002
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: checkout_latency_500_003
+    fault_family: checkout_latency_500
+    root_cause_service: checkout
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: checkout_latency_500_003
+    recovery_run_id: checkout_latency_500_recovery_003
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: checkout_latency_500_004
+    fault_family: checkout_latency_500
+    root_cause_service: checkout
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: checkout_latency_500_004
+    recovery_run_id: checkout_latency_500_recovery_004
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: checkout_latency_500_005
+    fault_family: checkout_latency_500
+    root_cause_service: checkout
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: checkout_latency_500_005
+    recovery_run_id: checkout_latency_500_recovery_005
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: checkout_latency_500_006
+    fault_family: checkout_latency_500
+    root_cause_service: checkout
+    fault_type: latency
+    fault_magnitude:
+      delay_ms: 500
+    fault_run_id: checkout_latency_500_006
+    recovery_run_id: checkout_latency_500_recovery_006
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: payment_error_50_001
+    fault_family: payment_error_50
+    root_cause_service: payment
+    fault_type: error
+    fault_magnitude:
+      failure_probability: 0.5
+    fault_run_id: payment_error_50_001
+    recovery_run_id: payment_error_50_recovery_001
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: payment_error_50_002
+    fault_family: payment_error_50
+    root_cause_service: payment
+    fault_type: error
+    fault_magnitude:
+      failure_probability: 0.5
+    fault_run_id: payment_error_50_002
+    recovery_run_id: payment_error_50_recovery_002
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: payment_error_50_003
+    fault_family: payment_error_50
+    root_cause_service: payment
+    fault_type: error
+    fault_magnitude:
+      failure_probability: 0.5
+    fault_run_id: payment_error_50_003
+    recovery_run_id: payment_error_50_recovery_003
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: payment_error_50_004
+    fault_family: payment_error_50
+    root_cause_service: payment
+    fault_type: error
+    fault_magnitude:
+      failure_probability: 0.5
+    fault_run_id: payment_error_50_004
+    recovery_run_id: payment_error_50_recovery_004
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: payment_error_50_005
+    fault_family: payment_error_50
+    root_cause_service: payment
+    fault_type: error
+    fault_magnitude:
+      failure_probability: 0.5
+    fault_run_id: payment_error_50_005
+    recovery_run_id: payment_error_50_recovery_005
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: product_catalog_error_50_001
+    fault_family: product_catalog_error_50
+    root_cause_service: product_catalog
+    fault_type: error
+    fault_magnitude:
+      failure_probability: 0.5
+    fault_run_id: product_catalog_error_50_001
+    recovery_run_id: product_catalog_error_50_recovery_001
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: product_catalog_error_50_002
+    fault_family: product_catalog_error_50
+    root_cause_service: product_catalog
+    fault_type: error
+    fault_magnitude:
+      failure_probability: 0.5
+    fault_run_id: product_catalog_error_50_002
+    recovery_run_id: product_catalog_error_50_recovery_002
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: product_catalog_error_50_003
+    fault_family: product_catalog_error_50
+    root_cause_service: product_catalog
+    fault_type: error
+    fault_magnitude:
+      failure_probability: 0.5
+    fault_run_id: product_catalog_error_50_003
+    recovery_run_id: product_catalog_error_50_recovery_003
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: product_catalog_error_50_005
+    fault_family: product_catalog_error_50
+    root_cause_service: product_catalog
+    fault_type: error
+    fault_magnitude:
+      failure_probability: 0.5
+    fault_run_id: product_catalog_error_50_005
+    recovery_run_id: product_catalog_error_50_recovery_005
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: product_catalog_error_50_006
+    fault_family: product_catalog_error_50
+    root_cause_service: product_catalog
+    fault_type: error
+    fault_magnitude:
+      failure_probability: 0.5
+    fault_run_id: product_catalog_error_50_006
+    recovery_run_id: product_catalog_error_50_recovery_006
+    fault_condition: fault
+    recovery_condition: recovery
+    ml_usage:
+      fault_run: eligible_after_processed_dataset_and_split_freeze
+      recovery_run: hold_until_recovery_label_policy_is_frozen
+  - pair_id: checkout_error_50_001
+    fault_family: checkout_error_50
+    root_cause_service: checkout
+    fault_type: error
+    fault_magnitude: {failure_probability: 0.5}
+    fault_run_id: checkout_error_50_001
+    recovery_run_id: checkout_error_50_recovery_001
+    fault_condition: fault
+    recovery_condition: recovery
+    acceptance_status: accepted
+    ml_usage: {fault_run: eligible_after_processed_dataset_and_split_freeze, recovery_run: hold_until_recovery_label_policy_is_frozen}
+  - pair_id: checkout_error_50_002
+    fault_family: checkout_error_50
+    root_cause_service: checkout
+    fault_type: error
+    fault_magnitude: {failure_probability: 0.5}
+    fault_run_id: checkout_error_50_002
+    recovery_run_id: checkout_error_50_recovery_002
+    fault_condition: fault
+    recovery_condition: recovery
+    acceptance_status: accepted
+    ml_usage: {fault_run: eligible_after_processed_dataset_and_split_freeze, recovery_run: hold_until_recovery_label_policy_is_frozen}
+  - pair_id: checkout_error_50_003
+    fault_family: checkout_error_50
+    root_cause_service: checkout
+    fault_type: error
+    fault_magnitude: {failure_probability: 0.5}
+    fault_run_id: checkout_error_50_003
+    recovery_run_id: checkout_error_50_recovery_003
+    fault_condition: fault
+    recovery_condition: recovery
+    acceptance_status: accepted
+    ml_usage: {fault_run: eligible_after_processed_dataset_and_split_freeze, recovery_run: hold_until_recovery_label_policy_is_frozen}
+  - pair_id: checkout_error_50_004
+    fault_family: checkout_error_50
+    root_cause_service: checkout
+    fault_type: error
+    fault_magnitude: {failure_probability: 0.5}
+    fault_run_id: checkout_error_50_004
+    recovery_run_id: checkout_error_50_recovery_004
+    fault_condition: fault
+    recovery_condition: recovery
+    acceptance_status: accepted
+    ml_usage: {fault_run: eligible_after_processed_dataset_and_split_freeze, recovery_run: hold_until_recovery_label_policy_is_frozen}
+  - pair_id: checkout_error_50_005
+    fault_family: checkout_error_50
+    root_cause_service: checkout
+    fault_type: error
+    fault_magnitude: {failure_probability: 0.5}
+    fault_run_id: checkout_error_50_005
+    recovery_run_id: checkout_error_50_recovery_005
+    fault_condition: fault
+    recovery_condition: recovery
+    acceptance_status: accepted
+    ml_usage: {fault_run: eligible_after_processed_dataset_and_split_freeze, recovery_run: hold_until_recovery_label_policy_is_frozen}
+  - pair_id: product_catalog_latency_500_002
+    fault_family: product_catalog_latency_500
+    root_cause_service: product_catalog
+    fault_type: latency
+    fault_magnitude: {delay_ms: 500}
+    fault_run_id: product_catalog_latency_500_002
+    recovery_run_id: product_catalog_latency_500_recovery_002
+    fault_condition: fault
+    recovery_condition: recovery
+    acceptance_status: accepted
+    ml_usage: {fault_run: eligible_after_processed_dataset_and_split_freeze, recovery_run: hold_until_recovery_label_policy_is_frozen}
+  - pair_id: product_catalog_latency_500_003
+    fault_family: product_catalog_latency_500
+    root_cause_service: product_catalog
+    fault_type: latency
+    fault_magnitude: {delay_ms: 500}
+    fault_run_id: product_catalog_latency_500_003
+    recovery_run_id: product_catalog_latency_500_recovery_003
+    fault_condition: fault
+    recovery_condition: recovery
+    acceptance_status: accepted
+    ml_usage: {fault_run: eligible_after_processed_dataset_and_split_freeze, recovery_run: hold_until_recovery_label_policy_is_frozen}
+  - pair_id: product_catalog_latency_500_004
+    fault_family: product_catalog_latency_500
+    root_cause_service: product_catalog
+    fault_type: latency
+    fault_magnitude: {delay_ms: 500}
+    fault_run_id: product_catalog_latency_500_004
+    recovery_run_id: product_catalog_latency_500_recovery_004
+    fault_condition: fault
+    recovery_condition: recovery
+    acceptance_status: accepted
+    ml_usage: {fault_run: eligible_after_processed_dataset_and_split_freeze, recovery_run: hold_until_recovery_label_policy_is_frozen}
+  - pair_id: product_catalog_latency_500_005
+    fault_family: product_catalog_latency_500
+    root_cause_service: product_catalog
+    fault_type: latency
+    fault_magnitude: {delay_ms: 500}
+    fault_run_id: product_catalog_latency_500_005
+    recovery_run_id: product_catalog_latency_500_recovery_005
+    fault_condition: fault
+    recovery_condition: recovery
+    acceptance_status: accepted
+    ml_usage: {fault_run: eligible_after_processed_dataset_and_split_freeze, recovery_run: hold_until_recovery_label_policy_is_frozen}
+  - pair_id: product_catalog_latency_500_006
+    fault_family: product_catalog_latency_500
+    root_cause_service: product_catalog
+    fault_type: latency
+    fault_magnitude: {delay_ms: 500}
+    fault_run_id: product_catalog_latency_500_006
+    recovery_run_id: product_catalog_latency_500_recovery_006
+    fault_condition: fault
+    recovery_condition: recovery
+    acceptance_status: accepted
+    ml_usage: {fault_run: eligible_after_processed_dataset_and_split_freeze, recovery_run: hold_until_recovery_label_policy_is_frozen}
+excluded:
+- run_id: payment_latency_500_recovery_001
+  status: quarantined
+  reason: incomplete/corrupted recovery run; malformed metadata
+- pair_id: cart_latency_500_001
+  fault_run_id: cart_latency_500_001
+  recovery_run_id: cart_latency_500_recovery_001
+  status: quarantined
+  reason: pair quarantined
+- pair_id: checkout_latency_500_001
+  fault_run_id: checkout_latency_500_001
+  recovery_run_id: checkout_latency_500_recovery_001
+  status: quarantined
+  reason: pair quarantined
+- pair_id: product_catalog_error_50_004
+  fault_run_id: product_catalog_error_50_004
+  recovery_run_id: product_catalog_error_50_recovery_004
+  status: quarantined
+  reason: incomplete/failed recovery
+- pair_id: product_catalog_latency_500_001
+  fault_run_id: product_catalog_latency_500_001
+  recovery_run_id: product_catalog_latency_500_recovery_001
+  status: quarantined
+  reason: workload stalled during fault and recovery target-service activity was absent
+- run_id: cart_error_smoke_001
+  status: excluded
+  reason: smoke test; fault signal not observable
+- run_id: recommendation_cpu_smoke_001
+  status: excluded
+  reason: smoke test; CPU signal not observable
+- pattern: '*smoke*'
+  status: excluded
+  reason: smoke-test datasets are not official Dataset v2 training runs
+ml_policy:
+  primary_prediction_target: root_cause_service
+  primary_classes:
+  - healthy
+  - payment
+  - cart
+  - checkout
+  - product_catalog
+  secondary_prediction_target: fault_family
+  recovery_run_training_usage: undecided_do_not_train_until_label_policy_is_frozen
+  split_grouping: experiment_run_or_pair_level_only
+  random_row_split_allowed: false

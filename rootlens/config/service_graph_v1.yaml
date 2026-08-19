@@ -1,0 +1,107 @@
+schema_version: 1
+graph:
+  name: rootlens_service_graph_v1
+  version: v1
+  status: frozen
+  description: Directed service-call graph induced from the official OpenTelemetry
+    Demo architecture over the 12 services present in RootLens Dataset v1.
+  source:
+    type: official_documentation
+    name: OpenTelemetry Demo Architecture
+    verified_date: '2026-08-18'
+    note: Only edges whose source and destination are both in the frozen RootLens
+      Dataset v1 service set are retained.
+node_order:
+- frontend
+- frontend-proxy
+- checkout
+- payment
+- cart
+- currency
+- shipping
+- product-catalog
+- recommendation
+- email
+- ad
+- quote
+node_features:
+- cpu
+- memory
+- request_rate
+- has_requests
+- latency_ms
+- error_rps
+- error_rate
+edges:
+- source: frontend-proxy
+  target: frontend
+  protocol: HTTP
+- source: frontend
+  target: ad
+  protocol: gRPC
+- source: frontend
+  target: currency
+  protocol: gRPC
+- source: frontend
+  target: cart
+  protocol: gRPC
+- source: frontend
+  target: checkout
+  protocol: gRPC
+- source: frontend
+  target: shipping
+  protocol: HTTP
+- source: frontend
+  target: recommendation
+  protocol: gRPC
+- source: frontend
+  target: product-catalog
+  protocol: gRPC
+- source: checkout
+  target: currency
+  protocol: gRPC
+- source: checkout
+  target: cart
+  protocol: gRPC
+- source: checkout
+  target: payment
+  protocol: gRPC
+- source: checkout
+  target: email
+  protocol: HTTP
+- source: checkout
+  target: product-catalog
+  protocol: gRPC
+- source: checkout
+  target: shipping
+  protocol: HTTP
+- source: recommendation
+  target: product-catalog
+  protocol: gRPC
+- source: shipping
+  target: quote
+  protocol: HTTP
+gnn_policy:
+  stored_edge_direction: caller_to_callee
+  message_passing_graph: bidirectional
+  add_reverse_edges_at_build_time: true
+  add_self_loops: true
+  reason: Dataset v1 RCA is graph-level classification. We preserve real call direction
+    in the frozen topology, then add reverse edges for the first GraphSAGE baseline
+    so upstream and downstream telemetry can both participate in neighborhood aggregation.
+expected_counts:
+  nodes: 12
+  directed_call_edges: 16
+  node_features: 7
+  features_per_graph: 84
+excluded_non_dataset_nodes:
+- accounting
+- cache
+- flagd
+- flagd-ui
+- fraud-detection
+- image-provider
+- load-generator
+- queue
+- react-native-app
+- postgresql

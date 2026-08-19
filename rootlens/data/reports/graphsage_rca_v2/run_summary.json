@@ -1,0 +1,44 @@
+{
+  "mlflow_run_id": "8a183206780d4b4883ebf9cfe4625b06",
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 2050",
+  "parameter_count": 61445,
+  "best_epoch": 4,
+  "epochs_completed": 29,
+  "best_validation_accuracy": 1.0,
+  "best_validation_macro_f1": 1.0,
+  "best_validation_weighted_f1": 1.0,
+  "test_set_evaluated": false,
+  "comparison": [
+    {
+      "model": "graphsage_rca_v2_node_preserving",
+      "val_accuracy": 1.0,
+      "val_macro_f1": 1.0,
+      "val_weighted_f1": 1.0
+    },
+    {
+      "model": "random_forest",
+      "val_accuracy": 0.9666666666666668,
+      "val_macro_f1": 0.968253968253968,
+      "val_weighted_f1": 0.9656084656084656
+    },
+    {
+      "model": "graphsage_v1_mean_pool",
+      "val_accuracy": 0.9555555555555556,
+      "val_macro_f1": 0.9532553468037339,
+      "val_weighted_f1": 0.9531096143999369
+    },
+    {
+      "model": "logistic_regression",
+      "val_accuracy": 0.6666666666666666,
+      "val_macro_f1": 0.6333333333333333,
+      "val_weighted_f1": 0.6388888888888888
+    },
+    {
+      "model": "dummy_most_frequent",
+      "val_accuracy": 0.3333333333333333,
+      "val_macro_f1": 0.1,
+      "val_weighted_f1": 0.1666666666666666
+    }
+  ]
+}

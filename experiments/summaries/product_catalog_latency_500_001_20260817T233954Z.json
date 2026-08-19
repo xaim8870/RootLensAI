@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "experiment_id": "product_catalog_latency_500",
+  "started_at": "2026-08-17T23:36:24.069004+00:00",
+  "status": "PASS",
+  "runs": [
+    {
+      "sequence": 1,
+      "fault_run_id": "product_catalog_latency_smoke_v2_001",
+      "recovery_run_id": "product_catalog_latency_smoke_v2_recovery_001",
+      "fault": {
+        "schema_version": 1,
+        "run_id": "product_catalog_latency_smoke_v2_001",
+        "condition": "fault",
+        "status": "PASS",
+        "research_valid": true,
+        "validated_at": "2026-08-17T23:38:07.891136+00:00",
+        "gates": [
+          {
+            "name": "required_columns",
+            "status": "PASS",
+            "detail": "all required columns present"
+          },
+          {
+            "name": "expected_windows",
+            "status": "PASS",
+            "detail": "actual=12, minimum=12, configured=12"
+          },
+          {
+            "name": "expected_rows",
+            "status": "PASS",
+            "detail": "actual=144, minimum=144, configured=144"
+          },
+          {
+            "name": "services_per_window",
+            "status": "PASS",
+            "detail": "windows_with_wrong_service_count=0, expected_per_window=12"
+          },
+          {
+            "name": "unique_service_rows",
+            "status": "PASS",
+            "detail": "duplicate_timestamp_service_rows=0"
+          },
+          {
+            "name": "expected_services",
+            "status": "PASS",
+            "detail": "missing=[], unexpected=[]"
+          },
+          {
+            "name": "missing_request_rate",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_cpu",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_memory",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "target_service_activity",
+            "status": "PASS",
+            "detail": "service=product-catalog, active_fraction=1.0000, minimum=0.8000"
+          },
+          {
+            "name": "nonnegative_metrics",
+            "status": "PASS",
+            "detail": "negative_counts={}"
+          },
+          {
+            "name": "error_rate_bounds",
+            "status": "PASS",
+            "detail": "invalid_rows=0, bounds=[0,1.0]"
+          },
+          {
+            "name": "intervention_visible",
+            "status": "PASS",
+            "detail": "target_median_latency_ms=521.6826819312807, minimum=400.0"
+          },
+          {
+            "name": "latency_increase",
+            "status": "PASS",
+            "detail": "increase_ms=494.3070795330235, minimum=300.0, baseline_ms=27.37560239825722"
+          },
+          {
+            "name": "metadata_consistency",
+            "status": "PASS",
+            "detail": "metadata_rows=144, csv_rows=144, metadata_windows=12, csv_windows=12"
+          }
+        ]
+      },
+      "recovery": {
+        "schema_version": 1,
+        "run_id": "product_catalog_latency_smoke_v2_recovery_001",
+        "condition": "recovery",
+        "status": "PASS",
+        "research_valid": true,
+        "validated_at": "2026-08-17T23:39:54.199154+00:00",
+        "gates": [
+          {
+            "name": "required_columns",
+            "status": "PASS",
+            "detail": "all required columns present"
+          },
+          {
+            "name": "expected_windows",
+            "status": "PASS",
+            "detail": "actual=12, minimum=12, configured=12"
+          },
+          {
+            "name": "expected_rows",
+            "status": "PASS",
+            "detail": "actual=144, minimum=144, configured=144"
+          },
+          {
+            "name": "services_per_window",
+            "status": "PASS",
+            "detail": "windows_with_wrong_service_count=0, expected_per_window=12"
+          },
+          {
+            "name": "unique_service_rows",
+            "status": "PASS",
+            "detail": "duplicate_timestamp_service_rows=0"
+          },
+          {
+            "name": "expected_services",
+            "status": "PASS",
+            "detail": "missing=[], unexpected=[]"
+          },
+          {
+            "name": "missing_request_rate",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_cpu",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "missing_memory",
+            "status": "PASS",
+            "detail": "fraction=0.0000, maximum=0.0500"
+          },
+          {
+            "name": "target_service_activity",
+            "status": "PASS",
+            "detail": "service=product-catalog, active_fraction=1.0000, minimum=0.8000"
+          },
+          {
+            "name": "nonnegative_metrics",
+            "status": "PASS",
+            "detail": "negative_counts={}"
+          },
+          {
+            "name": "error_rate_bounds",
+            "status": "PASS",
+            "detail": "invalid_rows=0, bounds=[0,1.0]"
+          },
+          {
+            "name": "recovery_direction",
+            "status": "PASS",
+            "detail": "recovery_to_fault_latency_ratio=0.08022382123089168, maximum=0.3, recovery_ms=41.85137821450719, fault_ms=521.6826819312807"
+          },
+          {
+            "name": "metadata_consistency",
+            "status": "PASS",
+            "detail": "metadata_rows=144, csv_rows=144, metadata_windows=12, csv_windows=12"
+          }
+        ]
+      }
+    }
+  ],
+  "finished_at": "2026-08-17T23:39:54.203891+00:00"
+}

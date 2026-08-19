@@ -1,0 +1,13 @@
+{
+  "mlflow_run_id": "2e29ee0ea718430b870a9ef5f6d92da2",
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 2050",
+  "best_epoch": 50,
+  "epochs_completed": 70,
+  "best_validation_accuracy": 0.9555555555555556,
+  "best_validation_macro_f1": 0.9532553468037339,
+  "best_validation_weighted_f1": 0.9531096143999369,
+  "best_validation_loss": 0.18012574029853567,
+  "test_set_evaluated": false,
+  "random_forest_validation_macro_f1_reference": 0.9683
+}

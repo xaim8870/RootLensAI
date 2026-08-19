@@ -1,0 +1,38 @@
+schema_version: 1
+experiment_id: ad_cpu_1worker
+fault_service: ad
+fault_type: resource_cpu
+fault_magnitude: one_busy_worker
+conditions: {fault: ad_cpu_1worker, recovery: recovery_after_ad_cpu_1worker}
+intervention:
+  environment_variable: AD_CPU_LOAD_WORKERS
+  fault_value: "1"
+  recovery_value: "0"
+  verification:
+    method: shell_env
+    executable: /bin/bash
+collection: {duration_seconds: 300, sampling_interval_seconds: 5, warmup_seconds: 30, promql_window: 30s}
+smoke: {duration_seconds: 60, run_id_prefix: ad_cpu_smoke}
+repetitions: 1
+expected_services: [frontend, frontend-proxy, checkout, payment, cart, currency, shipping, product-catalog, recommendation, email, ad, quote]
+validation:
+  baseline_run_dir: rootlens/data/raw/healthy_control_checkout_context_001
+  minimum_window_fraction: 1.0
+  maximum_missing_request_rate_fraction: 0.05
+  maximum_missing_cpu_fraction: 0.05
+  maximum_missing_memory_fraction: 0.05
+  minimum_target_active_fraction: 0.70
+  maximum_error_rate: 1.0
+  minimum_fault_target_cpu: 50.0
+  minimum_fault_cpu_increase: 40.0
+  fault_cpu_consistency_threshold: 25.0
+  minimum_fault_cpu_window_fraction: 0.80
+  maximum_nontarget_median_cpu_increase: 20.0
+  maximum_recovery_target_cpu: 10.0
+  maximum_recovery_to_fault_cpu_ratio: 0.20
+infrastructure:
+  prometheus_url: http://localhost:9090
+  prometheus_max_sample_age_seconds: 60
+  compose_project_directory: opentelemetry-demo
+  compose_files: [compose.yaml, compose.observability.yaml]
+  env_files: [.env, .env.override]

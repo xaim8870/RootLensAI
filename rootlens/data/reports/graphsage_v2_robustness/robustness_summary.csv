@@ -1,0 +1,3 @@
+condition,n_seeds,window_macro_f1_mean,window_macro_f1_std,window_macro_f1_min,window_macro_f1_max,run_accuracy_mean,run_accuracy_min,perfect_run_localization_seeds
+real_graph,5,0.9979987492182614,0.004002501563477167,0.9899937460913071,1.0,1.0,1.0,5
+self_loops_only,5,1.0,0.0,1.0,1.0,1.0,1.0,5

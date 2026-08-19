@@ -59,6 +59,16 @@ def validate_config(config: dict[str, Any]) -> None:
     baseline = config["validation"].get("baseline_run_dir")
     if baseline and not (REPO_ROOT / baseline / "metrics.csv").is_file():
         raise ExperimentFailure(f"validation baseline dataset is missing: {baseline}")
+    readiness = config.get("recovery_readiness")
+    if readiness:
+        for key in ("workload_service", "probe_service"):
+            if not SERVICE_NAME_RE.fullmatch(str(readiness.get(key, ""))):
+                raise ExperimentFailure(f"recovery_readiness.{key} contains unsafe characters")
+        if float(readiness.get("minimum_request_rate", 0)) <= 0:
+            raise ExperimentFailure("recovery_readiness.minimum_request_rate must be positive")
+        for key in ("timeout_seconds", "poll_interval_seconds", "consecutive_successes"):
+            if int(readiness.get(key, 0)) < 1:
+                raise ExperimentFailure(f"recovery_readiness.{key} must be positive")
     infra = config["infrastructure"]
     if infra.get("compose_files") != ["compose.yaml", "compose.observability.yaml"] or infra.get("env_files") != [".env", ".env.override"]:
         raise ExperimentFailure("RootLens requires both canonical Compose files and both environment files in order")
@@ -118,6 +128,86 @@ def check_services(config: dict[str, Any]) -> None:
     missing = sorted(required - running)
     if missing:
         raise ExperimentFailure(f"expected Docker services are not running: {missing}")
+
+
+def wait_service_healthy(config: dict[str, Any], service: str, timeout_seconds: int) -> None:
+    project = REPO_ROOT / config["infrastructure"]["compose_project_directory"]
+    deadline = time.monotonic() + timeout_seconds
+    last_status = "unknown"
+    while time.monotonic() < deadline:
+        result = run_command(["docker", "inspect", service, "--format", "{{json .State}}"],
+                             project, capture=True)
+        try:
+            state = json.loads(result.stdout.strip())
+        except json.JSONDecodeError as exc:
+            raise ExperimentFailure(f"unable to parse Docker state for {service}: {result.stdout!r}") from exc
+        health = state.get("Health", {}).get("Status")
+        last_status = str(health or state.get("Status", "unknown"))
+        if state.get("Running") and (health is None or health == "healthy"):
+            return
+        time.sleep(2)
+    raise ExperimentFailure(f"service {service} did not become healthy within {timeout_seconds}s; last_status={last_status}")
+
+
+def workload_request_rate(config: dict[str, Any], service: str, window: str) -> float:
+    url = str(config["infrastructure"]["prometheus_url"]).rstrip("/")
+    query = ("sum(rate(traces_span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\","
+             f"service_name=\"{service}\"}}[{window}]))")
+    try:
+        response = requests.get(f"{url}/api/v1/query", params={"query": query}, timeout=10)
+        response.raise_for_status()
+        payload = response.json()
+    except (requests.RequestException, ValueError) as exc:
+        raise ExperimentFailure(f"workload readiness query failed: {exc}") from exc
+    results = payload.get("data", {}).get("result", []) if payload.get("status") == "success" else []
+    if not results:
+        return 0.0
+    try:
+        return float(results[0]["value"][1])
+    except (KeyError, IndexError, TypeError, ValueError) as exc:
+        raise ExperimentFailure(f"invalid workload readiness response: {payload!r}") from exc
+
+
+def wait_for_workload(config: dict[str, Any], recover_if_stalled: bool = True) -> None:
+    readiness = config.get("recovery_readiness")
+    if not readiness:
+        return
+    probe_service = str(readiness["probe_service"])
+    workload_service = str(readiness["workload_service"])
+    window = str(readiness.get("promql_window", config["collection"]["promql_window"]))
+    minimum_rate = float(readiness["minimum_request_rate"])
+    timeout_seconds = int(readiness["timeout_seconds"])
+    poll_seconds = int(readiness.get("poll_interval_seconds", 5))
+    consecutive_required = int(readiness.get("consecutive_successes", 2))
+    project = REPO_ROOT / config["infrastructure"]["compose_project_directory"]
+
+    initial_rate = workload_request_rate(config, probe_service, window)
+    print(f"Workload readiness: service={probe_service}, request_rate={initial_rate:.6f}, minimum={minimum_rate:.6f}", flush=True)
+    if initial_rate < minimum_rate and recover_if_stalled:
+        run_command(compose_base(config) + ["restart", workload_service], project)
+        wait_service_healthy(config, workload_service, min(timeout_seconds, 60))
+
+    deadline = time.monotonic() + timeout_seconds
+    consecutive = 0
+    last_rate = initial_rate
+    while time.monotonic() < deadline:
+        last_rate = workload_request_rate(config, probe_service, window)
+        consecutive = consecutive + 1 if last_rate >= minimum_rate else 0
+        print(f"Workload readiness: service={probe_service}, request_rate={last_rate:.6f}, "
+              f"consecutive={consecutive}/{consecutive_required}", flush=True)
+        if consecutive >= consecutive_required:
+            return
+        time.sleep(poll_seconds)
+    raise ExperimentFailure(f"workload did not recover within {timeout_seconds}s; service={probe_service}, "
+                            f"last_request_rate={last_rate}, minimum={minimum_rate}")
+
+
+def prepare_recovery(config: dict[str, Any]) -> None:
+    readiness = config.get("recovery_readiness")
+    if not readiness:
+        return
+    wait_service_healthy(config, str(config["fault_service"]), int(readiness["timeout_seconds"]))
+    wait_for_workload(config)
 
 
 def set_target(config: dict[str, Any], value: str) -> None:
@@ -213,7 +303,7 @@ def planned_commands(config: dict[str, Any], repetitions: int, fault_run_id: str
         arguments = " ".join(str(item).replace("{environment_variable}", str(variable))
                              for item in verification.get("arguments", []))
         verify_command = f'docker exec {service} {verification["executable"]} {arguments}'.rstrip()
-    return [
+    commands = [
         f"GET {config['infrastructure']['prometheus_url']}/-/ready",
         f"GET {config['infrastructure']['prometheus_url']}/api/v1/query?query=traces_span_metrics_calls_total",
         f"{base} ps --services --filter status=running",
@@ -222,9 +312,22 @@ def planned_commands(config: dict[str, Any], repetitions: int, fault_run_id: str
         subprocess.list2cmdline(collector_command(config, fault_run_id, config["conditions"]["fault"])),
         f'$env:{variable}="{config["intervention"]["recovery_value"]}"; {base} up -d --no-deps --force-recreate {service}',
         verify_command,
+    ]
+    readiness = config.get("recovery_readiness")
+    if readiness:
+        probe = readiness["probe_service"]
+        window = readiness.get("promql_window", config["collection"]["promql_window"])
+        commands += [
+            f'docker inspect {service} --format "{{{{json .State}}}}"',
+            f'GET {config["infrastructure"]["prometheus_url"]}/api/v1/query?query=sum(rate(traces_span_metrics_calls_total{{span_kind="SPAN_KIND_SERVER",service_name="{probe}"}}[{window}]))',
+            f'{base} restart {readiness["workload_service"]}  # only if request rate is below {readiness["minimum_request_rate"]}',
+            f'Wait up to {readiness["timeout_seconds"]}s for {readiness.get("consecutive_successes", 2)} consecutive workload-ready probes.',
+        ]
+    commands += [
         subprocess.list2cmdline(collector_command(config, recovery_run_id, config["conditions"]["recovery"])),
         f"Repeat paired sequence {repetitions} time(s); abort on first critical failure.",
     ]
+    return commands
 
 
 def main() -> int:
@@ -291,6 +394,7 @@ def main() -> int:
                 pair["fault"] = fault_result
                 set_target(config, config["intervention"]["recovery_value"])
                 fault_active = False
+                prepare_recovery(config)
                 recovery_result = collect_and_validate(config, recovery_id, "recovery", DATA_ROOT / fault_id)
                 pair["recovery"] = recovery_result
         except Exception as exc:
@@ -302,6 +406,7 @@ def main() -> int:
                 try:
                     set_target(config, config["intervention"]["recovery_value"])
                     fault_active = False
+                    prepare_recovery(config)
                 except Exception as recovery_exc:
                     summary["emergency_recovery_error"] = str(recovery_exc)
             summary["finished_at"] = datetime.now(timezone.utc).isoformat()

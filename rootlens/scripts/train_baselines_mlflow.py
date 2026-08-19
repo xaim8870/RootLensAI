@@ -47,6 +47,7 @@ import argparse
 import hashlib
 import json
 import sys
+import time
 from pathlib import Path
 from typing import Any
 
@@ -134,26 +135,30 @@ def validate_split_frames(
     train_df: pd.DataFrame,
     val_df: pd.DataFrame,
     feature_columns: list[str],
+    expected_train_rows: int,
+    expected_val_rows: int,
+    expected_train_runs: int,
+    expected_val_runs: int,
 ) -> None:
-    if len(train_df) != 1080:
+    if len(train_df) != expected_train_rows:
         raise ValueError(
-            f"Expected 1080 training rows, found {len(train_df)}"
+            f"Expected {expected_train_rows} training rows, found {len(train_df)}"
         )
 
-    if len(val_df) != 360:
+    if len(val_df) != expected_val_rows:
         raise ValueError(
-            f"Expected 360 validation rows, found {len(val_df)}"
+            f"Expected {expected_val_rows} validation rows, found {len(val_df)}"
         )
 
-    if train_df["run_id"].nunique() != 18:
+    if train_df["run_id"].nunique() != expected_train_runs:
         raise ValueError(
-            f"Expected 18 training runs, found "
+            f"Expected {expected_train_runs} training runs, found "
             f"{train_df['run_id'].nunique()}"
         )
 
-    if val_df["run_id"].nunique() != 6:
+    if val_df["run_id"].nunique() != expected_val_runs:
         raise ValueError(
-            f"Expected 6 validation runs, found "
+            f"Expected {expected_val_runs} validation runs, found "
             f"{val_df['run_id'].nunique()}"
         )
 
@@ -354,6 +359,7 @@ def log_per_class_metrics(
 
 def configure_mlflow(
     repo_root: Path,
+    experiment_name: str = EXPERIMENT_NAME,
 ) -> tuple[str, Path]:
     """
     Use a local SQLite MLflow backend.
@@ -369,7 +375,7 @@ def configure_mlflow(
     tracking_uri = f"sqlite:///{db_path.as_posix()}"
 
     mlflow.set_tracking_uri(tracking_uri)
-    mlflow.set_experiment(EXPERIMENT_NAME)
+    mlflow.set_experiment(experiment_name)
 
     return tracking_uri, db_path
 
@@ -440,6 +446,19 @@ def parse_args() -> argparse.Namespace:
         help="Model random seed.",
     )
 
+    parser.add_argument(
+        "--experiment-name",
+        default=EXPERIMENT_NAME,
+        help="MLflow experiment name.",
+    )
+
+    parser.add_argument(
+        "--manifest",
+        type=Path,
+        default=Path("rootlens/data/manifests/dataset_v1.yaml"),
+        help="Frozen dataset manifest recorded as provenance.",
+    )
+
     return parser.parse_args()
 
 
@@ -468,6 +487,7 @@ def main() -> int:
         args.split_metadata,
         repo_root,
     )
+    manifest_path = resolve_path(args.manifest, repo_root)
     output_dir = resolve_path(
         args.output_dir,
         repo_root,
@@ -499,6 +519,10 @@ def main() -> int:
             train_df=train_df,
             val_df=val_df,
             feature_columns=feature_columns,
+            expected_train_rows=int(split_metadata["row_counts_by_split"]["train"]),
+            expected_val_rows=int(split_metadata["row_counts_by_split"]["validation"]),
+            expected_train_runs=int(split_metadata["run_counts_by_split"]["train"]),
+            expected_val_runs=int(split_metadata["run_counts_by_split"]["validation"]),
         )
 
         X_train = train_df[feature_columns]
@@ -513,6 +537,7 @@ def main() -> int:
 
         tracking_uri, db_path = configure_mlflow(
             repo_root=repo_root,
+            experiment_name=args.experiment_name,
         )
 
         output_dir.mkdir(
@@ -628,6 +653,7 @@ def main() -> int:
                             "run_id"
                         ].nunique(),
                         "target": TARGET_COLUMN,
+                        "dataset_manifest_path": str(manifest_path),
                     }
                 )
 
@@ -655,10 +681,31 @@ def main() -> int:
                 # Train
                 # ------------------------
 
+                training_started = time.perf_counter()
                 model.fit(
                     X_train,
                     y_train,
                 )
+                training_duration_seconds = time.perf_counter() - training_started
+
+                y_train_pred = model.predict(X_train)
+                mlflow.log_metrics({
+                    "train_accuracy": float(accuracy_score(y_train, y_train_pred)),
+                    "train_macro_f1": float(f1_score(
+                        y_train, y_train_pred, average="macro", zero_division=0
+                    )),
+                    "train_weighted_f1": float(f1_score(
+                        y_train, y_train_pred, average="weighted", zero_division=0
+                    )),
+                })
+                if model_name == "logistic_regression":
+                    classifier = model.named_steps["classifier"]
+                    iterations_used = int(classifier.n_iter_.max())
+                    mlflow.log_param("iterations_used", iterations_used)
+                    mlflow.set_tag(
+                        "converged",
+                        str(iterations_used < classifier.max_iter).lower(),
+                    )
 
                 # ------------------------
                 # Validation inference
@@ -698,6 +745,7 @@ def main() -> int:
                         "val_weighted_f1": float(
                             weighted_f1
                         ),
+                        "training_duration_seconds": float(training_duration_seconds),
                     }
                 )
 
@@ -773,6 +821,25 @@ def main() -> int:
                     artifact_path="dataset",
                 )
 
+                if model_name == "random_forest":
+                    importance_df = pd.DataFrame({
+                        "feature": feature_columns,
+                        "importance": model.feature_importances_,
+                    }).sort_values("importance", ascending=False)
+                    importance_csv = model_output_dir / "feature_importance.csv"
+                    importance_png = model_output_dir / "feature_importance.png"
+                    importance_df.to_csv(importance_csv, index=False)
+                    top = importance_df.head(25).sort_values("importance")
+                    fig, ax = plt.subplots(figsize=(10, 9))
+                    ax.barh(top["feature"], top["importance"])
+                    ax.set_title("Random Forest — Top 25 Feature Importances (Dataset v2)")
+                    ax.set_xlabel("Mean decrease in impurity")
+                    fig.tight_layout()
+                    fig.savefig(importance_png, dpi=160)
+                    plt.close(fig)
+                    mlflow.log_artifact(str(importance_csv), artifact_path="interpretation")
+                    mlflow.log_artifact(str(importance_png), artifact_path="interpretation")
+
                 # ------------------------
                 # Log trained sklearn model
                 # ------------------------
@@ -800,6 +867,7 @@ def main() -> int:
                         "val_accuracy": accuracy,
                         "val_macro_f1": macro_f1,
                         "val_weighted_f1": weighted_f1,
+                        "training_duration_seconds": training_duration_seconds,
                     }
                 )
 
@@ -831,7 +899,7 @@ def main() -> int:
 
         print(f"MLflow tracking URI:   {tracking_uri}")
         print(f"MLflow database:       {db_path}")
-        print(f"Experiment:            {EXPERIMENT_NAME}")
+        print(f"Experiment:            {args.experiment_name}")
         print(f"Training rows:         {len(train_df)}")
         print(f"Validation rows:       {len(val_df)}")
         print(f"Features:              {len(feature_columns)}")

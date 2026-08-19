@@ -1,0 +1,36 @@
+{
+  "test_set_evaluated": false,
+  "seeds": [
+    11,
+    21,
+    42,
+    73,
+    101
+  ],
+  "device": "cuda",
+  "random_forest_reference_macro_f1": 0.9683,
+  "conditions": [
+    {
+      "condition": "real_graph",
+      "n_seeds": 5,
+      "window_macro_f1_mean": 0.9979987492182614,
+      "window_macro_f1_std": 0.004002501563477167,
+      "window_macro_f1_min": 0.9899937460913071,
+      "window_macro_f1_max": 1.0,
+      "run_accuracy_mean": 1.0,
+      "run_accuracy_min": 1.0,
+      "perfect_run_localization_seeds": 5
+    },
+    {
+      "condition": "self_loops_only",
+      "n_seeds": 5,
+      "window_macro_f1_mean": 1.0,
+      "window_macro_f1_std": 0.0,
+      "window_macro_f1_min": 1.0,
+      "window_macro_f1_max": 1.0,
+      "run_accuracy_mean": 1.0,
+      "run_accuracy_min": 1.0,
+      "perfect_run_localization_seeds": 5
+    }
+  ]
+}

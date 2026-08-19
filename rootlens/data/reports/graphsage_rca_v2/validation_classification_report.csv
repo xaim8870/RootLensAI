@@ -1,0 +1,9 @@
+,precision,recall,f1-score,support
+healthy,1.0,1.0,1.0,60.0
+payment,1.0,1.0,1.0,120.0
+cart,1.0,1.0,1.0,60.0
+checkout,1.0,1.0,1.0,60.0
+product_catalog,1.0,1.0,1.0,60.0
+accuracy,1.0,1.0,1.0,1.0
+macro avg,1.0,1.0,1.0,360.0
+weighted avg,1.0,1.0,1.0,360.0

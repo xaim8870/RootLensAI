@@ -1,0 +1,45 @@
+{
+  "healthy": {
+    "precision": 1.0,
+    "recall": 0.95,
+    "f1-score": 0.9743589743589743,
+    "support": 60.0
+  },
+  "payment": {
+    "precision": 0.975609756097561,
+    "recall": 1.0,
+    "f1-score": 0.9876543209876543,
+    "support": 120.0
+  },
+  "cart": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 60.0
+  },
+  "checkout": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 120.0
+  },
+  "product_catalog": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 120.0
+  },
+  "accuracy": 0.99375,
+  "macro avg": {
+    "precision": 0.9951219512195122,
+    "recall": 0.99,
+    "f1-score": 0.9924026590693258,
+    "support": 480.0
+  },
+  "weighted avg": {
+    "precision": 0.9939024390243902,
+    "recall": 0.99375,
+    "f1-score": 0.9937084520417853,
+    "support": 480.0
+  }
+}
