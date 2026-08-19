@@ -6,6 +6,8 @@ Errors.txt
 Resources.md
 workflow.txt
 responses.txt
+notes.txt
+
 
 rootlens/.venv
 opentelemetry-demo/.venv
@@ -18,6 +20,7 @@ mlruns/
 rootlens/mlflow.db
 rootlens/data/runtime/
 rootlens/rag/indexes/text_index/model_cache/
+frontend/
 
 Concepts.txt
 

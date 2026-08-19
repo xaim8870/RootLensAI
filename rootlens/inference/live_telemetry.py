@@ -1,3 +1,4 @@
+#rootlens/inference/live_telemetry.py
 #!/usr/bin/env python3
 """Prometheus-to-GraphSAGE adapter using frozen RootLens PromQL semantics."""
 

@@ -1,0 +1,14 @@
+{
+  "validation_accuracy": 0.99375,
+  "validation_mean_confidence": 0.978547166738089,
+  "validation_accuracy_confidence_gap": 0.015202833261911075,
+  "validation_ece": 0.023586634526159164,
+  "validation_nll": 0.034113210428409334,
+  "validation_brier_score": 0.01138922216962057,
+  "calibration_bins": 10,
+  "validation_windows": 480,
+  "sealed_test_evaluated": false,
+  "canonical_model_mlflow_run_id": "c5b8c95fd91d4ce2ab27df44e846ddec",
+  "dataset_version": "v2",
+  "probability_source": "raw_softmax"
+}

@@ -1,3 +1,4 @@
+#scripts/validate_dataset_manifest.py
 #!/usr/bin/env python3
 """
 Validate the frozen RootLens Dataset v1 manifest against raw run folders.

@@ -9,3 +9,5 @@ huggingface-hub>=0.34,<2
 sentence-transformers>=3,<6
 scikit-learn>=1.5,<2
 python-dotenv>=1,<2
+fastapi>=0.115,<1
+uvicorn[standard]>=0.34,<1

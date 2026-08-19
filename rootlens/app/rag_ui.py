@@ -31,9 +31,9 @@ def _render_ai_header() -> None:
           <div class="rl-ai-kicker">ROOTLENSAI · GROUNDED INCIDENT INTELLIGENCE</div>
           <div class="rl-ai-title">AI-assisted incident investigation</div>
           <div class="rl-ai-copy">
-            Combines the current GraphSAGE RCA output with retrieved validated
-            incidents and frozen knowledge context. Fault-injection metadata is
-            never supplied to the model or the explanation pipeline.
+            Retrieved validated incidents + grounded explanation. GraphSAGE
+            remains the independent RCA decision engine; fault-injection metadata
+            is never supplied to the model or explanation pipeline.
           </div>
           <div class="rl-ai-chip-row">
             <span class="rl-chip">GRAPH RCA INDEPENDENT</span>

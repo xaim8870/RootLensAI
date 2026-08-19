@@ -1,3 +1,4 @@
+#rootlens/inference/rca_inference.py
 #!/usr/bin/env python3
 """Frozen GraphSAGE RCA v2 inference with no runtime fitting."""
 

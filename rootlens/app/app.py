@@ -45,6 +45,9 @@ from rootlens.app.ui_components import (
     telemetry_style,
     topology_svg,
 )
+from rootlens.app.calibration_ui import (
+    render_calibration_panel,
+)
 from rootlens.inference.live_telemetry import run_live_rca
 from rootlens.inference.rca_inference import RCAInference
 
@@ -215,24 +218,27 @@ init_ui_state()
 maybe_tick_countdown()
 
 mode_column, refresh_column, spacer = st.columns(
-    [1.0, 1.65, 4.35],
+    [1.25, 1.8, 3.95],
     gap="medium",
 )
 
-demo_mode = mode_column.toggle(
-    "Demo mode",
-    value=default_demo,
-)
+with mode_column.container(key="demo_mode_control"):
+    demo_mode = st.toggle(
+        "DEMO MODE",
+        value=default_demo,
+        key="rootlens_demo_mode",
+    )
 
 remaining = cooldown_remaining()
 refresh_label = f"RCA LOCKED · {remaining}s" if remaining else "REFRESH RCA"
 
-refresh = refresh_column.button(
-    refresh_label,
-    type="secondary",
-    width="stretch",
-    disabled=bool(remaining),
-)
+with refresh_column.container(key="refresh_rca_action"):
+    refresh = st.button(
+        refresh_label,
+        type="secondary",
+        width="stretch",
+        disabled=bool(remaining),
+    )
 
 st.markdown(
     header_html(demo_mode),
@@ -313,7 +319,9 @@ elif st.session_state.get("rca_error"):
     st.error(f"RCA unavailable: {st.session_state.rca_error}")
 
 elif st.session_state.get("rca_result"):
+    current_result = (st.session_state.rca_result)
     render_result(st.session_state.rca_result)
+    render_calibration_panel(current_result)
     render_ai_analysis(st.session_state.rca_result)
 
 elif cooldown_active():

@@ -137,7 +137,7 @@ def header_html(demo_mode: bool) -> str:
     mode = "DEMO" if demo_mode else "LIVE"
     return f"""
     <div class="rl-header">
-      <div><div class="rl-brand">RootLensAI</div>
+      <div><div class="rl-brand">RootLens</div>
       <div class="rl-subtitle">AI-Driven Microservice Root Cause Analysis</div></div>
       <div class="rl-badges">
         <div class="rl-badge"><b>MODEL</b>GraphSAGE RCA v2</div>
@@ -156,8 +156,9 @@ def status_html(result: Mapping[str, object]) -> str:
         <div class="rl-status-state">{'INCIDENT DETECTED' if incident else 'SYSTEM HEALTHY'}</div></div>
       <div><div class="rl-field-label">{'Predicted root cause' if incident else 'Predicted state'}</div>
         <div class="rl-root-value">{html.escape(predicted)}</div></div>
-      <div><div class="rl-field-label">Confidence</div>
-        <div class="rl-confidence">{float(result['confidence']):.1%}</div></div>
+      <div><div class="rl-field-label">Current window confidence</div>
+        <div class="rl-confidence">{float(result['confidence']):.1%}</div>
+        <div class="rl-confidence-note">Probability assigned to the predicted class.<br>Not overall model accuracy.</div></div>
     </div>"""
 
 
@@ -221,7 +222,7 @@ def topology_svg(topology_path: Path, predicted: str) -> str:
             f'{html.escape(node)}</text>'
         )
     return f"""
-    <div style="border:1px solid #292929;background:#050505;padding:.55rem;overflow-x:auto">
+    <div class="rl-topology-shell">
     <svg viewBox="0 0 750 390" width="100%" role="img" aria-label="RootLens service topology">
       <defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
         <path d="M0,0 L7,3.5 L0,7 z" fill="#3b3b3b" /></marker></defs>

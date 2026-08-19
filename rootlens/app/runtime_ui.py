@@ -298,11 +298,14 @@ def render_demo_controls() -> None:
     inject_disabled = bool(state["active"]) or active_wait
     restore_disabled = not bool(state["active"])
 
-    if inject_column.button(
-        "INJECT FAULT",
-        width="stretch",
-        disabled=inject_disabled,
-    ):
+    with inject_column.container(key="fault_inject_action"):
+        inject_clicked = st.button(
+            "INJECT FAULT",
+            width="stretch",
+            disabled=inject_disabled,
+        )
+
+    if inject_clicked:
         started = time.perf_counter()
 
         try:
@@ -342,11 +345,14 @@ def render_demo_controls() -> None:
             LOGGER.exception("Fault injection failed")
             st.error(f"Fault injection failed after {duration:.2f}s: {exc}")
 
-    if restore_column.button(
-        "RESTORE SYSTEM",
-        width="stretch",
-        disabled=restore_disabled,
-    ):
+    with restore_column.container(key="restore_system_action"):
+        restore_clicked = st.button(
+            "RESTORE SYSTEM",
+            width="stretch",
+            disabled=restore_disabled,
+        )
+
+    if restore_clicked:
         started = time.perf_counter()
 
         try:
