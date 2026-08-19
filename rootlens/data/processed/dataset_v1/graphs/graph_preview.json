@@ -1,0 +1,351 @@
+{
+  "run_id": "healthy_control_cart_context_001",
+  "timestamp": "2026-08-16T20:41:56.502308+00:00",
+  "split": "train",
+  "label_name": "healthy",
+  "label_index": 0,
+  "x_shape": [
+    12,
+    7
+  ],
+  "edge_index_shape": [
+    2,
+    44
+  ],
+  "nodes": [
+    {
+      "node_index": 0,
+      "service": "frontend",
+      "features": {
+        "cpu": 9.036922454833984,
+        "memory": 74.2171859741211,
+        "request_rate": 7.641528129577637,
+        "has_requests": 1.0,
+        "latency_ms": 86.05394744873047,
+        "error_rps": 0.0,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "node_index": 1,
+      "service": "frontend-proxy",
+      "features": {
+        "cpu": 6.095621109008789,
+        "memory": 61.85763931274414,
+        "request_rate": 5.161032199859619,
+        "has_requests": 1.0,
+        "latency_ms": 121.51155853271484,
+        "error_rps": 0.0,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "node_index": 2,
+      "service": "checkout",
+      "features": {
+        "cpu": 10.270618438720703,
+        "memory": 29.0618896484375,
+        "request_rate": 0.2800559997558594,
+        "has_requests": 1.0,
+        "latency_ms": 443.5668029785156,
+        "error_rps": 0.0,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "node_index": 3,
+      "service": "payment",
+      "features": {
+        "cpu": 10.131377220153809,
+        "memory": 77.17354583740234,
+        "request_rate": 0.2800559997558594,
+        "has_requests": 1.0,
+        "latency_ms": 6.227777004241943,
+        "error_rps": 0.0,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "node_index": 4,
+      "service": "cart",
+      "features": {
+        "cpu": 0.20038175582885742,
+        "memory": 34.3994140625,
+        "request_rate": 2.8005599975585938,
+        "has_requests": 1.0,
+        "latency_ms": 14.18196964263916,
+        "error_rps": 0.0,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "node_index": 5,
+      "service": "currency",
+      "features": {
+        "cpu": 2.613308906555176,
+        "memory": 52.734375,
+        "request_rate": 1.2402480840682983,
+        "has_requests": 1.0,
+        "latency_ms": 0.34932488203048706,
+        "error_rps": 0.0,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "node_index": 6,
+      "service": "shipping",
+      "features": {
+        "cpu": 2.453312397003174,
+        "memory": 65.703125,
+        "request_rate": 0.5201039910316467,
+        "has_requests": 1.0,
+        "latency_ms": 41.222896575927734,
+        "error_rps": 0.0,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "node_index": 7,
+      "service": "product-catalog",
+      "features": {
+        "cpu": 14.957418441772461,
+        "memory": 24.13330078125,
+        "request_rate": 4.080816268920898,
+        "has_requests": 1.0,
+        "latency_ms": 49.0968132019043,
+        "error_rps": 0.0,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "node_index": 8,
+      "service": "recommendation",
+      "features": {
+        "cpu": 6.204505443572998,
+        "memory": 14.081250190734863,
+        "request_rate": 0.3200640082359314,
+        "has_requests": 1.0,
+        "latency_ms": 40.34074401855469,
+        "error_rps": 0.0,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "node_index": 9,
+      "service": "email",
+      "features": {
+        "cpu": 7.321290969848633,
+        "memory": 83.8984375,
+        "request_rate": 0.2800559997558594,
+        "has_requests": 1.0,
+        "latency_ms": 84.89805603027344,
+        "error_rps": 0.0,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "node_index": 10,
+      "service": "ad",
+      "features": {
+        "cpu": 3.4281694889068604,
+        "memory": 94.95572662353516,
+        "request_rate": 0.08001600205898285,
+        "has_requests": 1.0,
+        "latency_ms": 5.241381645202637,
+        "error_rps": 0.0,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "node_index": 11,
+      "service": "quote",
+      "features": {
+        "cpu": 4.0933051109313965,
+        "memory": 69.140625,
+        "request_rate": 0.3200640082359314,
+        "has_requests": 1.0,
+        "latency_ms": 11.544939994812012,
+        "error_rps": 0.0,
+        "error_rate": 0.0
+      }
+    }
+  ],
+  "message_passing_edges": [
+    {
+      "source": "frontend",
+      "target": "frontend"
+    },
+    {
+      "source": "frontend",
+      "target": "frontend-proxy"
+    },
+    {
+      "source": "frontend",
+      "target": "checkout"
+    },
+    {
+      "source": "frontend",
+      "target": "cart"
+    },
+    {
+      "source": "frontend",
+      "target": "currency"
+    },
+    {
+      "source": "frontend",
+      "target": "shipping"
+    },
+    {
+      "source": "frontend",
+      "target": "product-catalog"
+    },
+    {
+      "source": "frontend",
+      "target": "recommendation"
+    },
+    {
+      "source": "frontend",
+      "target": "ad"
+    },
+    {
+      "source": "frontend-proxy",
+      "target": "frontend"
+    },
+    {
+      "source": "frontend-proxy",
+      "target": "frontend-proxy"
+    },
+    {
+      "source": "checkout",
+      "target": "frontend"
+    },
+    {
+      "source": "checkout",
+      "target": "checkout"
+    },
+    {
+      "source": "checkout",
+      "target": "payment"
+    },
+    {
+      "source": "checkout",
+      "target": "cart"
+    },
+    {
+      "source": "checkout",
+      "target": "currency"
+    },
+    {
+      "source": "checkout",
+      "target": "shipping"
+    },
+    {
+      "source": "checkout",
+      "target": "product-catalog"
+    },
+    {
+      "source": "checkout",
+      "target": "email"
+    },
+    {
+      "source": "payment",
+      "target": "checkout"
+    },
+    {
+      "source": "payment",
+      "target": "payment"
+    },
+    {
+      "source": "cart",
+      "target": "frontend"
+    },
+    {
+      "source": "cart",
+      "target": "checkout"
+    },
+    {
+      "source": "cart",
+      "target": "cart"
+    },
+    {
+      "source": "currency",
+      "target": "frontend"
+    },
+    {
+      "source": "currency",
+      "target": "checkout"
+    },
+    {
+      "source": "currency",
+      "target": "currency"
+    },
+    {
+      "source": "shipping",
+      "target": "frontend"
+    },
+    {
+      "source": "shipping",
+      "target": "checkout"
+    },
+    {
+      "source": "shipping",
+      "target": "shipping"
+    },
+    {
+      "source": "shipping",
+      "target": "quote"
+    },
+    {
+      "source": "product-catalog",
+      "target": "frontend"
+    },
+    {
+      "source": "product-catalog",
+      "target": "checkout"
+    },
+    {
+      "source": "product-catalog",
+      "target": "product-catalog"
+    },
+    {
+      "source": "product-catalog",
+      "target": "recommendation"
+    },
+    {
+      "source": "recommendation",
+      "target": "frontend"
+    },
+    {
+      "source": "recommendation",
+      "target": "product-catalog"
+    },
+    {
+      "source": "recommendation",
+      "target": "recommendation"
+    },
+    {
+      "source": "email",
+      "target": "checkout"
+    },
+    {
+      "source": "email",
+      "target": "email"
+    },
+    {
+      "source": "ad",
+      "target": "frontend"
+    },
+    {
+      "source": "ad",
+      "target": "ad"
+    },
+    {
+      "source": "quote",
+      "target": "shipping"
+    },
+    {
+      "source": "quote",
+      "target": "quote"
+    }
+  ]
+}

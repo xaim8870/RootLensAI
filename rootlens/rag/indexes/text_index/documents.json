@@ -1,0 +1,368 @@
+[
+  {
+    "evidence_id": "INCIDENT_cart_latency_500_002",
+    "kind": "incident",
+    "title": "cart_latency_500_002",
+    "run_id": "cart_latency_500_002",
+    "root_cause": "cart",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run cart_latency_500_002. Root cause label: cart. Fault family: cart_latency_500. Fault type: latency. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=522.997; median error_rate=0; median error_rps=0; median request_rate=1.68027. Recovery run: cart_latency_500_recovery_002. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_cart_latency_500_004",
+    "kind": "incident",
+    "title": "cart_latency_500_004",
+    "run_id": "cart_latency_500_004",
+    "root_cause": "cart",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run cart_latency_500_004. Root cause label: cart. Fault family: cart_latency_500. Fault type: latency. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=516.755; median error_rate=0; median error_rps=0; median request_rate=1.90038. Recovery run: cart_latency_500_recovery_004. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_cart_latency_500_005",
+    "kind": "incident",
+    "title": "cart_latency_500_005",
+    "run_id": "cart_latency_500_005",
+    "root_cause": "cart",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run cart_latency_500_005. Root cause label: cart. Fault family: cart_latency_500. Fault type: latency. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=518.369; median error_rate=0; median error_rps=0; median request_rate=1.78102. Recovery run: cart_latency_500_recovery_005. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_cart_latency_500_006",
+    "kind": "incident",
+    "title": "cart_latency_500_006",
+    "run_id": "cart_latency_500_006",
+    "root_cause": "cart",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run cart_latency_500_006. Root cause label: cart. Fault family: cart_latency_500. Fault type: latency. Condition: fault. Dataset split: validation. Observed telemetry summary: median latency_ms=527.747; median error_rate=0; median error_rps=0; median request_rate=1.73967. Recovery run: cart_latency_500_recovery_006. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_checkout_error_50_002",
+    "kind": "incident",
+    "title": "checkout_error_50_002",
+    "run_id": "checkout_error_50_002",
+    "root_cause": "checkout",
+    "fault_type": "error",
+    "text": "Validated Dataset v2 development run checkout_error_50_002. Root cause label: checkout. Fault family: checkout_error_50. Fault type: error. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=287.057; median error_rate=0.5; median error_rps=0.160026; median request_rate=0.320051. Recovery run: checkout_error_50_recovery_002. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_checkout_error_50_003",
+    "kind": "incident",
+    "title": "checkout_error_50_003",
+    "run_id": "checkout_error_50_003",
+    "root_cause": "checkout",
+    "fault_type": "error",
+    "text": "Validated Dataset v2 development run checkout_error_50_003. Root cause label: checkout. Fault family: checkout_error_50. Fault type: error. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=144.402; median error_rate=0.5; median error_rps=0.120053; median request_rate=0.240288. Recovery run: checkout_error_50_recovery_003. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_checkout_error_50_004",
+    "kind": "incident",
+    "title": "checkout_error_50_004",
+    "run_id": "checkout_error_50_004",
+    "root_cause": "checkout",
+    "fault_type": "error",
+    "text": "Validated Dataset v2 development run checkout_error_50_004. Root cause label: checkout. Fault family: checkout_error_50. Fault type: error. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=227.663; median error_rate=0.5; median error_rps=0.160026; median request_rate=0.280331. Recovery run: checkout_error_50_recovery_004. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_checkout_error_50_005",
+    "kind": "incident",
+    "title": "checkout_error_50_005",
+    "run_id": "checkout_error_50_005",
+    "root_cause": "checkout",
+    "fault_type": "error",
+    "text": "Validated Dataset v2 development run checkout_error_50_005. Root cause label: checkout. Fault family: checkout_error_50. Fault type: error. Condition: fault. Dataset split: validation. Observed telemetry summary: median latency_ms=296.073; median error_rate=0.5; median error_rps=0.159974; median request_rate=0.280151. Recovery run: checkout_error_50_recovery_005. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_checkout_latency_500_002",
+    "kind": "incident",
+    "title": "checkout_latency_500_002",
+    "run_id": "checkout_latency_500_002",
+    "root_cause": "checkout",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run checkout_latency_500_002. Root cause label: checkout. Fault family: checkout_latency_500. Fault type: latency. Condition: fault. Dataset split: validation. Observed telemetry summary: median latency_ms=1023.68; median error_rate=0; median error_rps=0; median request_rate=0.280179. Recovery run: checkout_latency_500_recovery_002. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_checkout_latency_500_003",
+    "kind": "incident",
+    "title": "checkout_latency_500_003",
+    "run_id": "checkout_latency_500_003",
+    "root_cause": "checkout",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run checkout_latency_500_003. Root cause label: checkout. Fault family: checkout_latency_500. Fault type: latency. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=1233.27; median error_rate=0; median error_rps=0; median request_rate=0.239923. Recovery run: checkout_latency_500_recovery_003. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_checkout_latency_500_004",
+    "kind": "incident",
+    "title": "checkout_latency_500_004",
+    "run_id": "checkout_latency_500_004",
+    "root_cause": "checkout",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run checkout_latency_500_004. Root cause label: checkout. Fault family: checkout_latency_500. Fault type: latency. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=860.154; median error_rate=0; median error_rps=0; median request_rate=0.319987. Recovery run: checkout_latency_500_recovery_004. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_checkout_latency_500_005",
+    "kind": "incident",
+    "title": "checkout_latency_500_005",
+    "run_id": "checkout_latency_500_005",
+    "root_cause": "checkout",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run checkout_latency_500_005. Root cause label: checkout. Fault family: checkout_latency_500. Fault type: latency. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=882.662; median error_rate=0; median error_rps=0; median request_rate=0.28. Recovery run: checkout_latency_500_recovery_005. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_healthy_baseline_005",
+    "kind": "incident",
+    "title": "healthy_baseline_005",
+    "run_id": "healthy_baseline_005",
+    "root_cause": "healthy",
+    "fault_type": "none",
+    "text": "Validated Dataset v2 development run healthy_baseline_005. Root cause label: healthy. Fault family: healthy. Fault type: none. Condition: healthy. Dataset split: train. Observed telemetry summary: No controlled fault was active; this is an accepted healthy development run.. Recovery run: none for healthy run. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_healthy_control_cart_context_001",
+    "kind": "incident",
+    "title": "healthy_control_cart_context_001",
+    "run_id": "healthy_control_cart_context_001",
+    "root_cause": "healthy",
+    "fault_type": "none",
+    "text": "Validated Dataset v2 development run healthy_control_cart_context_001. Root cause label: healthy. Fault family: healthy. Fault type: none. Condition: healthy. Dataset split: train. Observed telemetry summary: No controlled fault was active; this is an accepted healthy development run.. Recovery run: none for healthy run. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_healthy_control_checkout_context_001",
+    "kind": "incident",
+    "title": "healthy_control_checkout_context_001",
+    "run_id": "healthy_control_checkout_context_001",
+    "root_cause": "healthy",
+    "fault_type": "none",
+    "text": "Validated Dataset v2 development run healthy_control_checkout_context_001. Root cause label: healthy. Fault family: healthy. Fault type: none. Condition: healthy. Dataset split: train. Observed telemetry summary: No controlled fault was active; this is an accepted healthy development run.. Recovery run: none for healthy run. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_healthy_pilot_001",
+    "kind": "incident",
+    "title": "healthy_pilot_001",
+    "run_id": "healthy_pilot_001",
+    "root_cause": "healthy",
+    "fault_type": "none",
+    "text": "Validated Dataset v2 development run healthy_pilot_001. Root cause label: healthy. Fault family: healthy. Fault type: none. Condition: healthy. Dataset split: validation. Observed telemetry summary: No controlled fault was active; this is an accepted healthy development run.. Recovery run: none for healthy run. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_payment_error_50_001",
+    "kind": "incident",
+    "title": "payment_error_50_001",
+    "run_id": "payment_error_50_001",
+    "root_cause": "payment",
+    "fault_type": "error",
+    "text": "Validated Dataset v2 development run payment_error_50_001. Root cause label: payment. Fault family: payment_error_50. Fault type: error. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=2.50506; median error_rate=0.5; median error_rps=0.160022; median request_rate=0.32009. Recovery run: payment_error_50_recovery_001. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_payment_error_50_002",
+    "kind": "incident",
+    "title": "payment_error_50_002",
+    "run_id": "payment_error_50_002",
+    "root_cause": "payment",
+    "fault_type": "error",
+    "text": "Validated Dataset v2 development run payment_error_50_002. Root cause label: payment. Fault family: payment_error_50. Fault type: error. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=3.6621; median error_rate=0.5; median error_rps=0.160013; median request_rate=0.316244. Recovery run: payment_error_50_recovery_002. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_payment_error_50_003",
+    "kind": "incident",
+    "title": "payment_error_50_003",
+    "run_id": "payment_error_50_003",
+    "root_cause": "payment",
+    "fault_type": "error",
+    "text": "Validated Dataset v2 development run payment_error_50_003. Root cause label: payment. Fault family: payment_error_50. Fault type: error. Condition: fault. Dataset split: validation. Observed telemetry summary: median latency_ms=3.7753; median error_rate=0.5; median error_rps=0.160019; median request_rate=0.280185. Recovery run: payment_error_50_recovery_003. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_payment_error_50_005",
+    "kind": "incident",
+    "title": "payment_error_50_005",
+    "run_id": "payment_error_50_005",
+    "root_cause": "payment",
+    "fault_type": "error",
+    "text": "Validated Dataset v2 development run payment_error_50_005. Root cause label: payment. Fault family: payment_error_50. Fault type: error. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=2.60532; median error_rate=0.5; median error_rps=0.160045; median request_rate=0.320032. Recovery run: payment_error_50_recovery_005. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_payment_latency_500_001",
+    "kind": "incident",
+    "title": "payment_latency_500_001",
+    "run_id": "payment_latency_500_001",
+    "root_cause": "payment",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run payment_latency_500_001. Root cause label: payment. Fault family: payment_latency_500. Fault type: latency. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=503.385; median error_rate=0; median error_rps=0; median request_rate=0.317238. Recovery run: payment_latency_500_recovery_002. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_payment_latency_500_003",
+    "kind": "incident",
+    "title": "payment_latency_500_003",
+    "run_id": "payment_latency_500_003",
+    "root_cause": "payment",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run payment_latency_500_003. Root cause label: payment. Fault family: payment_latency_500. Fault type: latency. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=504.577; median error_rate=0; median error_rps=0; median request_rate=0.360065. Recovery run: payment_latency_500_recovery_003. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_payment_latency_500_004",
+    "kind": "incident",
+    "title": "payment_latency_500_004",
+    "run_id": "payment_latency_500_004",
+    "root_cause": "payment",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run payment_latency_500_004. Root cause label: payment. Fault family: payment_latency_500. Fault type: latency. Condition: fault. Dataset split: validation. Observed telemetry summary: median latency_ms=505.153; median error_rate=0; median error_rps=0; median request_rate=0.240086. Recovery run: payment_latency_500_recovery_004. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_payment_latency_500_005",
+    "kind": "incident",
+    "title": "payment_latency_500_005",
+    "run_id": "payment_latency_500_005",
+    "root_cause": "payment",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run payment_latency_500_005. Root cause label: payment. Fault family: payment_latency_500. Fault type: latency. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=506.007; median error_rate=0; median error_rps=0; median request_rate=0.278162. Recovery run: payment_latency_500_recovery_005. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_product_catalog_error_50_001",
+    "kind": "incident",
+    "title": "product_catalog_error_50_001",
+    "run_id": "product_catalog_error_50_001",
+    "root_cause": "product_catalog",
+    "fault_type": "error",
+    "text": "Validated Dataset v2 development run product_catalog_error_50_001. Root cause label: product_catalog. Fault family: product_catalog_error_50. Fault type: error. Condition: fault. Dataset split: validation. Observed telemetry summary: median latency_ms=2.98624; median error_rate=0.450842; median error_rps=1.22007; median request_rate=2.72021. Recovery run: product_catalog_error_50_recovery_001. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_product_catalog_error_50_003",
+    "kind": "incident",
+    "title": "product_catalog_error_50_003",
+    "run_id": "product_catalog_error_50_003",
+    "root_cause": "product_catalog",
+    "fault_type": "error",
+    "text": "Validated Dataset v2 development run product_catalog_error_50_003. Root cause label: product_catalog. Fault family: product_catalog_error_50. Fault type: error. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=2.71751; median error_rate=0.442091; median error_rps=1.22053; median request_rate=2.70016. Recovery run: product_catalog_error_50_recovery_003. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_product_catalog_error_50_005",
+    "kind": "incident",
+    "title": "product_catalog_error_50_005",
+    "run_id": "product_catalog_error_50_005",
+    "root_cause": "product_catalog",
+    "fault_type": "error",
+    "text": "Validated Dataset v2 development run product_catalog_error_50_005. Root cause label: product_catalog. Fault family: product_catalog_error_50. Fault type: error. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=2.30105; median error_rate=0.446934; median error_rps=1.19971; median request_rate=2.67952. Recovery run: product_catalog_error_50_recovery_005. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_product_catalog_error_50_006",
+    "kind": "incident",
+    "title": "product_catalog_error_50_006",
+    "run_id": "product_catalog_error_50_006",
+    "root_cause": "product_catalog",
+    "fault_type": "error",
+    "text": "Validated Dataset v2 development run product_catalog_error_50_006. Root cause label: product_catalog. Fault family: product_catalog_error_50. Fault type: error. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=4.32872; median error_rate=0.45; median error_rps=1.05005; median request_rate=2.35717. Recovery run: product_catalog_error_50_recovery_006. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_product_catalog_latency_500_002",
+    "kind": "incident",
+    "title": "product_catalog_latency_500_002",
+    "run_id": "product_catalog_latency_500_002",
+    "root_cause": "product_catalog",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run product_catalog_latency_500_002. Root cause label: product_catalog. Fault family: product_catalog_latency_500. Fault type: latency. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=545.135; median error_rate=0; median error_rps=0; median request_rate=2.32488. Recovery run: product_catalog_latency_500_recovery_002. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_product_catalog_latency_500_003",
+    "kind": "incident",
+    "title": "product_catalog_latency_500_003",
+    "run_id": "product_catalog_latency_500_003",
+    "root_cause": "product_catalog",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run product_catalog_latency_500_003. Root cause label: product_catalog. Fault family: product_catalog_latency_500. Fault type: latency. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=497.435; median error_rate=0; median error_rps=0; median request_rate=3.06141. Recovery run: product_catalog_latency_500_recovery_003. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_product_catalog_latency_500_004",
+    "kind": "incident",
+    "title": "product_catalog_latency_500_004",
+    "run_id": "product_catalog_latency_500_004",
+    "root_cause": "product_catalog",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run product_catalog_latency_500_004. Root cause label: product_catalog. Fault family: product_catalog_latency_500. Fault type: latency. Condition: fault. Dataset split: train. Observed telemetry summary: median latency_ms=466.591; median error_rate=0; median error_rps=0; median request_rate=2.82056. Recovery run: product_catalog_latency_500_recovery_004. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "INCIDENT_product_catalog_latency_500_005",
+    "kind": "incident",
+    "title": "product_catalog_latency_500_005",
+    "run_id": "product_catalog_latency_500_005",
+    "root_cause": "product_catalog",
+    "fault_type": "latency",
+    "text": "Validated Dataset v2 development run product_catalog_latency_500_005. Root cause label: product_catalog. Fault family: product_catalog_latency_500. Fault type: latency. Condition: fault. Dataset split: validation. Observed telemetry summary: median latency_ms=514.932; median error_rate=0; median error_rps=0; median request_rate=2.60047. Recovery run: product_catalog_latency_500_recovery_005. This historical run is a supporting analogy only."
+  },
+  {
+    "evidence_id": "TOPOLOGY_frontend",
+    "kind": "topology",
+    "title": "frontend topology context",
+    "text": "Service topology for frontend. Calls: ad, currency, cart, checkout, shipping, recommendation, product-catalog. Called by: frontend-proxy. This is the frozen RootLens directed topology; retrieval context is not proof of causality."
+  },
+  {
+    "evidence_id": "TOPOLOGY_frontend-proxy",
+    "kind": "topology",
+    "title": "frontend-proxy topology context",
+    "text": "Service topology for frontend-proxy. Calls: frontend. Called by: none in the frozen graph. This is the frozen RootLens directed topology; retrieval context is not proof of causality."
+  },
+  {
+    "evidence_id": "TOPOLOGY_checkout",
+    "kind": "topology",
+    "title": "checkout topology context",
+    "text": "Service topology for checkout. Calls: currency, cart, payment, email, product-catalog, shipping. Called by: frontend. This is the frozen RootLens directed topology; retrieval context is not proof of causality."
+  },
+  {
+    "evidence_id": "TOPOLOGY_payment",
+    "kind": "topology",
+    "title": "payment topology context",
+    "text": "Service topology for payment. Calls: none in the frozen graph. Called by: checkout. This is the frozen RootLens directed topology; retrieval context is not proof of causality."
+  },
+  {
+    "evidence_id": "TOPOLOGY_cart",
+    "kind": "topology",
+    "title": "cart topology context",
+    "text": "Service topology for cart. Calls: none in the frozen graph. Called by: frontend, checkout. This is the frozen RootLens directed topology; retrieval context is not proof of causality."
+  },
+  {
+    "evidence_id": "TOPOLOGY_currency",
+    "kind": "topology",
+    "title": "currency topology context",
+    "text": "Service topology for currency. Calls: none in the frozen graph. Called by: frontend, checkout. This is the frozen RootLens directed topology; retrieval context is not proof of causality."
+  },
+  {
+    "evidence_id": "TOPOLOGY_shipping",
+    "kind": "topology",
+    "title": "shipping topology context",
+    "text": "Service topology for shipping. Calls: quote. Called by: frontend, checkout. This is the frozen RootLens directed topology; retrieval context is not proof of causality."
+  },
+  {
+    "evidence_id": "TOPOLOGY_product-catalog",
+    "kind": "topology",
+    "title": "product-catalog topology context",
+    "text": "Service topology for product-catalog. Calls: none in the frozen graph. Called by: frontend, checkout, recommendation. This is the frozen RootLens directed topology; retrieval context is not proof of causality."
+  },
+  {
+    "evidence_id": "TOPOLOGY_recommendation",
+    "kind": "topology",
+    "title": "recommendation topology context",
+    "text": "Service topology for recommendation. Calls: product-catalog. Called by: frontend. This is the frozen RootLens directed topology; retrieval context is not proof of causality."
+  },
+  {
+    "evidence_id": "TOPOLOGY_email",
+    "kind": "topology",
+    "title": "email topology context",
+    "text": "Service topology for email. Calls: none in the frozen graph. Called by: checkout. This is the frozen RootLens directed topology; retrieval context is not proof of causality."
+  },
+  {
+    "evidence_id": "TOPOLOGY_ad",
+    "kind": "topology",
+    "title": "ad topology context",
+    "text": "Service topology for ad. Calls: none in the frozen graph. Called by: frontend. This is the frozen RootLens directed topology; retrieval context is not proof of causality."
+  },
+  {
+    "evidence_id": "TOPOLOGY_quote",
+    "kind": "topology",
+    "title": "quote topology context",
+    "text": "Service topology for quote. Calls: none in the frozen graph. Called by: shipping. This is the frozen RootLens directed topology; retrieval context is not proof of causality."
+  },
+  {
+    "evidence_id": "PROTOCOL_DATASET_V2",
+    "kind": "protocol",
+    "title": "Dataset v2 telemetry protocol",
+    "text": "RootLens Dataset v2 uses 30-second PromQL windows sampled every 5 seconds. Each system window contains 12 services and seven features per service: CPU, memory, request rate, has-requests, latency milliseconds, error RPS, and error rate. Historical development incidents are controlled analogies, not proof of a live diagnosis."
+  }
+]

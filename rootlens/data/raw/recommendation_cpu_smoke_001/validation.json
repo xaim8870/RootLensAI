@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "run_id": "recommendation_cpu_smoke_001",
+  "condition": "fault",
+  "status": "FAIL",
+  "research_valid": false,
+  "validated_at": "2026-08-17T15:11:56.295985+00:00",
+  "gates": [
+    {
+      "name": "required_columns",
+      "status": "PASS",
+      "detail": "all required columns present"
+    },
+    {
+      "name": "expected_windows",
+      "status": "PASS",
+      "detail": "actual=12, minimum=12, configured=12"
+    },
+    {
+      "name": "expected_rows",
+      "status": "PASS",
+      "detail": "actual=144, minimum=144, configured=144"
+    },
+    {
+      "name": "services_per_window",
+      "status": "PASS",
+      "detail": "windows_with_wrong_service_count=0, expected_per_window=12"
+    },
+    {
+      "name": "unique_service_rows",
+      "status": "PASS",
+      "detail": "duplicate_timestamp_service_rows=0"
+    },
+    {
+      "name": "expected_services",
+      "status": "PASS",
+      "detail": "missing=[], unexpected=[]"
+    },
+    {
+      "name": "missing_request_rate",
+      "status": "PASS",
+      "detail": "fraction=0.0000, maximum=0.0500"
+    },
+    {
+      "name": "missing_cpu",
+      "status": "PASS",
+      "detail": "fraction=0.0000, maximum=0.0500"
+    },
+    {
+      "name": "missing_memory",
+      "status": "PASS",
+      "detail": "fraction=0.0000, maximum=0.0500"
+    },
+    {
+      "name": "target_service_activity",
+      "status": "PASS",
+      "detail": "service=recommendation, active_fraction=1.0000, minimum=0.8000"
+    },
+    {
+      "name": "nonnegative_metrics",
+      "status": "PASS",
+      "detail": "negative_counts={}"
+    },
+    {
+      "name": "error_rate_bounds",
+      "status": "PASS",
+      "detail": "invalid_rows=0, bounds=[0,1.0]"
+    },
+    {
+      "name": "resource_intervention_visible",
+      "status": "FAIL",
+      "detail": "target_median_cpu=0.07630912779165386, minimum=50.0"
+    },
+    {
+      "name": "resource_increase",
+      "status": "FAIL",
+      "detail": "increase=-6.101196954871036, minimum=40.0, baseline=6.17750608266269"
+    },
+    {
+      "name": "resource_consistency",
+      "status": "FAIL",
+      "detail": "window_fraction=0.0, minimum=0.8, threshold=25.0"
+    },
+    {
+      "name": "nontarget_cpu_contamination",
+      "status": "PASS",
+      "detail": "maximum_nontarget_median_cpu_increase=4.16236163975391, maximum=20.0, by_service={'frontend': -0.17040341694140437, 'frontend-proxy': 0.023237483718065555, 'checkout': 4.16236163975391, 'payment': -6.741825058821497, 'cart': 0.17921353519715333, 'currency': -0.013490766696059975, 'shipping': -0.021395526740812798, 'product-catalog': -14.546238445949248, 'email': -0.13742518296924278, 'ad': -0.17875363662915866, 'quote': 0.9500797994026966}"
+    },
+    {
+      "name": "metadata_consistency",
+      "status": "PASS",
+      "detail": "metadata_rows=144, csv_rows=144, metadata_windows=12, csv_windows=12"
+    }
+  ]
+}

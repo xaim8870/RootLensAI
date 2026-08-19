@@ -1,0 +1,11 @@
+mlflow_run_id,seed,condition,best_epoch,window_accuracy,window_macro_f1,window_weighted_f1,run_accuracy,run_macro_f1,correct_runs,total_runs
+745fb004cf4f40d388dd82b31f6ed860,11,real_graph,8,1.0,1.0,1.0,1.0,1.0,6,6
+e1e37b08c1004d0a98690bd600ebfd1b,21,real_graph,3,0.9916666666666667,0.9899937460913071,0.9916614550760892,1.0,1.0,6,6
+b140277ddadb4074b6d931d86213e074,42,real_graph,4,1.0,1.0,1.0,1.0,1.0,6,6
+0cc9872509414f59a88f07a44b2beeb0,73,real_graph,6,1.0,1.0,1.0,1.0,1.0,6,6
+2e2e81f57023443f941ef1c0cae04e1e,101,real_graph,3,1.0,1.0,1.0,1.0,1.0,6,6
+417ca269592943d5a015b517086f8ea9,11,self_loops_only,5,1.0,1.0,1.0,1.0,1.0,6,6
+a8d689afab2841ae967b22d58fb4442d,21,self_loops_only,4,1.0,1.0,1.0,1.0,1.0,6,6
+4178fa9596864b0b9248a1edd6ec5ff3,42,self_loops_only,6,1.0,1.0,1.0,1.0,1.0,6,6
+4f05d9f6bfd64bee81e1e222cdd42120,73,self_loops_only,4,1.0,1.0,1.0,1.0,1.0,6,6
+232f01b80f4c45cab82320bdf74b0d89,101,self_loops_only,4,1.0,1.0,1.0,1.0,1.0,6,6

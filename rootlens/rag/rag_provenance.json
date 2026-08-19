@@ -1,0 +1,14 @@
+{
+  "dataset_version": "v2",
+  "canonical_split_sha256": "33467da3f8e13bb3d6108aaaa8fe41ecbedf4be4b6cfda679b3df9483d4601a8",
+  "train_run_count_indexed": 24,
+  "validation_run_count_indexed": 8,
+  "sealed_test_run_count_indexed": 0,
+  "sealed_test_exclusion_verified": true,
+  "numeric_retrieval_method": "StandardScaler(train only) + cosine nearest neighbors",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "generation_model_default": "Qwen/Qwen3-4B-Thinking-2507",
+  "evidence_document_count": 45,
+  "creation_timestamp": "2026-08-19T00:39:05.026620+00:00",
+  "git_commit": "f56f90a5e5b6325dc7312b31a90a7023fb2c9321"
+}

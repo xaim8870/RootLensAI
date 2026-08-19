@@ -1,0 +1,5 @@
+RootLensGraphSAGE(
+  (conv1): SAGEConv(7, 32, aggr=mean)
+  (conv2): SAGEConv(32, 32, aggr=mean)
+  (classifier): Linear(in_features=32, out_features=5, bias=True)
+)
